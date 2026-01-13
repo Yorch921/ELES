@@ -4,27 +4,23 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>Pilates Online</h3>
-            <p>Tu plataforma de pilates en línea</p>
+        <div className="footer-top">
+          <div className="footer-logo">
+            <h1>ELES</h1>
           </div>
-          <div className="footer-section">
-            <h4>Enlaces</h4>
-            <ul>
-              <li><a href="/">Inicio</a></li>
-              <li><a href="/videos">Videos</a></li>
-              <li><a href="/planes">Planes</a></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Contacto</h4>
-            <p>Email: info@pilatesonline.com</p>
-            <p>Tel: +1 234 567 890</p>
-          </div>
+          <nav className="footer-links">
+            <a href="/privacy">Privacy</a>
+            <a href="/cookies">Cookies</a>
+          </nav>
+        </div>
+        <div className="footer-social">
+          <a href="#" className="social-icon">IG</a>
+          <a href="#" className="social-icon">YT</a>
+          <a href="#" className="social-icon">TK</a>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2025 Pilates Online. Todos los derechos reservados.</p>
+          <p>© 2026 Eles Club. Todos los derechos reservados.</p>
+          <p>Diseñado por Dominacode</p>
         </div>
       </div>
     </footer>

@@ -5,6 +5,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Plans from './pages/Plans';
+import Method from './pages/Method';
+import Workouts from './pages/Workouts';
+import FAQ from './pages/FAQ';
 import Videos from './pages/Videos';
 import './App.css';
 
@@ -21,6 +24,9 @@ function AppContent() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/method" element={<Method />} />
+          <Route path="/workouts" element={<Workouts />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/login" element={<Login />} />
           <Route path="/planes" element={<Plans />} />
           <Route path="/videos" element={<Videos />} />
