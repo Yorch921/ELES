@@ -1,0 +1,3665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELES Pilates - Workouts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --burgundy-red: #70000e;
+            --white: #ffffff;
+            --white-soft: rgba(255, 255, 255, 0.9);
+            --white-hover: rgba(255, 255, 255, 0.15);
+            --header-height: 95px;
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 20px;
+            --spacing-lg: 32px;
+            --transition-smooth: all 0.3s ease;
+            --transition-fast: all 0.2s ease;
+            --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: transparent;
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-top: 130px;
+        }
+
+        /* ============================================
+           BARRA SUPERIOR - REDES SOCIALES
+           ============================================ */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background-color: var(--white);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 var(--spacing-lg);
+            z-index: 10001;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .topbar .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .topbar .social-icons a {
+            color: var(--burgundy-red);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .topbar .social-icons a:hover {
+            transform: translateY(-3px) scale(1.15);
+            background: rgba(112, 0, 14, 0.1);
+        }
+
+        /* ============================================
+           HEADER PRINCIPAL
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 35px;
+            left: 0;
+            right: 0;
+            background: var(--burgundy-red);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+        }
+
+        /* ============================================
+           LOGO
+           ============================================ */
+        .logo {
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .logo a {
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+            transition: var(--transition-smooth);
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .logo a:hover img {
+            transform: scale(1.08);
+            filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* ============================================
+           NAVEGACIÓN PRINCIPAL
+           ============================================ */
+        .main-nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: all 0.4s ease;
+            border-radius: 5px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 75%;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: var(--white-hover);
+            transform: translateY(-2px);
+            letter-spacing: 0.8px;
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .mobile-subscribe-item {
+            display: none;
+        }
+
+        /* ============================================
+           ZONA DE ACCIONES
+           ============================================ */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .cart-btn,
+        .login-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .cart-btn::before,
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transform: scale(0);
+            transition: transform 0.4s ease;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        .cart-btn i,
+        .login-btn i {
+            font-size: 19px;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-btn:hover::before,
+        .login-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .cart-btn:hover,
+        .login-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-btn:hover i,
+        .login-btn:hover i {
+            color: var(--burgundy-red);
+        }
+
+        /* Badge del carrito */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--white);
+            color: var(--burgundy-red);
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border: 2px solid var(--burgundy-red);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            animation: cartBadgePulse 0.4s ease;
+        }
+
+        @keyframes cartBadgePulse {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Botón de suscripción */
+        .subscribe-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--burgundy-red);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .subscribe-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--burgundy-red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1.2px;
+        }
+
+        .subscribe-btn i {
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+
+        .subscribe-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           MENÚ HAMBURGUESA (MÓVIL)
+           ============================================ */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 11;
+        }
+
+        .hamburger-line {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            transition: var(--transition-smooth);
+            border-radius: 3px;
+        }
+
+        .menu-toggle:hover .hamburger-line {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* ============================================
+           PANEL LATERAL DEL CARRITO
+           ============================================ */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 10002;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .cart-sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar-header {
+            background: var(--burgundy-red);
+            color: var(--white);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-sidebar-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-close-btn:hover {
+            transform: rotate(90deg);
+            opacity: 0.8;
+        }
+
+        .cart-sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .cart-empty i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .cart-empty p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-item:hover {
+            background: #f9f9f9;
+            margin: 0 -10px;
+            padding: 20px 10px;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        .cart-item-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--burgundy-red);
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: var(--white);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quantity-btn:hover {
+            background: var(--burgundy-red);
+            color: var(--white);
+            border-color: var(--burgundy-red);
+        }
+
+        .quantity-value {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .cart-item-remove {
+            align-self: flex-start;
+            background: transparent;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-item-remove:hover {
+            color: #e74c3c;
+            transform: scale(1.2);
+        }
+
+        .cart-sidebar-footer {
+            background: #f8f8f8;
+            padding: 25px;
+            border-top: 2px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .cart-total-amount {
+            color: var(--burgundy-red);
+            font-size: 26px;
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--burgundy-red);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cart-checkout-btn:hover {
+            background: #8a0011;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(112, 0, 14, 0.3);
+        }
+
+        /* ============================================
+           RESPONSIVE - TABLET
+           ============================================ */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 0 var(--spacing-md);
+            }
+            
+            .nav-list {
+                gap: var(--spacing-md);
+            }
+            
+            .nav-link {
+                font-size: 16px;
+            }
+            
+            .logo img {
+                height: 60px;
+            }
+
+            .subscribe-btn {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 130px;
+                left: 0;
+                right: 0;
+                background: var(--burgundy-red);
+                padding: var(--spacing-lg);
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition-smooth);
+                border-top: none;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                max-height: calc(100vh - 130px);
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                align-items: stretch;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+                text-align: left;
+                font-size: 18px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                border-left: 3px solid transparent;
+            }
+
+            .nav-link::before {
+                display: none;
+            }
+
+            .nav-link:hover {
+                color: var(--white);
+                background: rgba(255, 255, 255, 0.15);
+                border-left-color: var(--white);
+                transform: translateX(5px);
+            }
+
+            .mobile-subscribe-item {
+                display: block;
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .subscribe-link {
+                background: var(--white) !important;
+                color: var(--burgundy-red) !important;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                justify-content: center;
+                border-left: none !important;
+            }
+
+            .subscribe-link i {
+                font-size: 16px;
+            }
+
+            .subscribe-link:hover {
+                background: rgba(255, 255, 255, 0.9) !important;
+                color: var(--burgundy-red) !important;
+                transform: translateY(0) !important;
+            }
+
+            .cart-sidebar {
+                width: 380px;
+                right: -380px;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE - MÓVIL
+           ============================================ */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 80px;
+            }
+            
+            body {
+                padding-top: 115px;
+            }
+            
+            .header-container {
+                padding: 0 var(--spacing-md);
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+
+            .subscribe-btn {
+                display: none;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 115px;
+                left: 0;
+                right: 0;
+                background: var(--burgundy-red);
+                padding: var(--spacing-lg);
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition-smooth);
+                border-top: none;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                max-height: calc(100vh - 115px);
+                overflow-y: auto;
+            }
+            
+            .main-nav.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                align-items: stretch;
+            }
+            
+            .nav-link {
+                padding: 15px 20px;
+                text-align: left;
+                font-size: 18px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                border-left: 3px solid transparent;
+            }
+            
+            .nav-link::before {
+                display: none;
+            }
+            
+            .nav-link:hover {
+                color: var(--white);
+                background: rgba(255, 255, 255, 0.15);
+                border-left-color: var(--white);
+                transform: translateX(5px);
+            }
+
+            .mobile-subscribe-item {
+                display: block;
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .subscribe-link {
+                background: var(--white) !important;
+                color: var(--burgundy-red) !important;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                justify-content: center;
+                border-left: none !important;
+            }
+
+            .subscribe-link i {
+                font-size: 16px;
+            }
+
+            .subscribe-link:hover {
+                background: rgba(255, 255, 255, 0.9) !important;
+                color: var(--burgundy-red) !important;
+                transform: translateY(0) !important;
+            }
+            
+            .logo img {
+                height: 55px;
+            }
+            
+            .cart-btn,
+            .login-btn {
+                width: 46px;
+                height: 46px;
+            }
+
+            .cart-btn i,
+            .login-btn i {
+                font-size: 18px;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topbar {
+                height: 30px;
+                padding: 0 10px;
+            }
+
+            .topbar .social-icons {
+                gap: 10px;
+            }
+
+            .topbar .social-icons a {
+                font-size: 1rem;
+                width: 28px;
+                height: 28px;
+            }
+
+            .header {
+                top: 30px;
+            }
+
+            body {
+                padding-top: 110px;
+            }
+
+            .main-nav {
+                top: 110px;
+                max-height: calc(100vh - 110px);
+            }
+
+            .logo img {
+                height: 48px;
+            }
+            
+            .cart-btn,
+            .login-btn {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .cart-btn i,
+            .login-btn i {
+                font-size: 17px;
+            }
+
+            .cart-badge {
+                min-width: 20px;
+                height: 20px;
+                font-size: 11px;
+                top: -7px;
+                right: -7px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    
+
+        :root {
+            --burgundy-red: #70000e;
+            --white: #ffffff;
+            --white-soft: rgba(255, 255, 255, 0.9);
+            --white-hover: rgba(255, 255, 255, 0.15);
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 20px;
+            --spacing-lg: 32px;
+            --transition-smooth: all 0.3s ease;
+            --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: transparent;
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .footer {
+            background: var(--burgundy-red);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-logo img {
+            height: 65px;
+            width: auto;
+            display: block;
+            transition: var(--transition-smooth);
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .footer-logo a:hover img {
+            transform: scale(1.08);
+            filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-links nav {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 10px 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .footer-links a:hover {
+            background: var(--white-hover);
+            transform: translateY(-2px);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links a:hover::after {
+            width: 75%;
+        }
+
+        .footer-links .separator {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 4px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+            gap: 14px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-social a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transform: scale(0);
+            transition: transform 0.4s ease;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        .footer-social a i {
+            font-size: 19px;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover::before {
+            transform: scale(1);
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-social a:hover i {
+            color: var(--burgundy-red);
+            transform: rotate(360deg);
+        }
+
+        .footer-bottom {
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--white-soft);
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .footer-credits {
+            font-size: 12px;
+            color: var(--white-soft);
+            font-weight: 300;
+        }
+
+        .footer-credits a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .footer-credits a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            background: var(--white-hover);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-credits a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-content {
+                gap: var(--spacing-md);
+            }
+
+            .footer-links a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: var(--spacing-md);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .footer-logo img {
+                height: 55px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-links nav {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .footer-links a {
+                display: block;
+                padding: 14px 20px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 10px;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            .footer-links a:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-left-color: var(--white);
+                transform: translateX(5px);
+            }
+
+            .footer-links a::after {
+                display: none;
+            }
+
+            .footer-links .separator {
+                display: none;
+            }
+
+            .footer-social {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .footer-social a {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo img {
+                height: 50px;
+            }
+
+            .footer-links a {
+                font-size: 15px;
+                padding: 12px 18px;
+            }
+
+            .footer-social a {
+                width: 40px;
+                height: 40px;
+            }
+
+            .footer-social a i {
+                font-size: 17px;
+            }
+
+            .footer-bottom p {
+                font-size: 12px;
+            }
+
+            .footer-credits {
+                font-size: 11px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F4EFE7;
+            overflow-x: hidden;
+        }
+
+        /* Color Variables */
+        :root {
+            --vanilla-bone: #E6DABE;
+            --deep-walnut: #4A2F1B;
+            --deep-navy: #0F1B4D;
+            --parchment: #F4EFE7;
+            --red: #70000e;
+        }
+
+        /* Class Styles Section */
+        .class-styles-section {
+            background-color: #ffffff;
+            padding: 40px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .view-all {
+            color: var(--deep-walnut);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .view-all::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--deep-walnut);
+            transition: width 0.3s ease;
+        }
+
+        .view-all:hover::after {
+            width: 100%;
+        }
+
+        /* Carousel Container */
+        .carousel-wrapper {
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+        }
+
+        /* Class Card */
+        .class-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            height: 320px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.1) 0%, rgba(112, 0, 14, 0.7) 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+
+        .class-card:hover::before {
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.3) 0%, rgba(112, 0, 14, 0.85) 100%);
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .class-card:hover .card-image {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 2;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .class-card:hover .card-title {
+            transform: translateY(-10px);
+        }
+
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .video-count {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffcccc;
+            letter-spacing: 0.5px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .class-card:hover .card-description {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+
+        /* Navigation Arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-nav.prev {
+            left: -20px;
+        }
+
+        .carousel-nav.next {
+            right: -20px;
+        }
+
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(112, 0, 14, 0.08);
+            border: 1px solid rgba(112, 0, 14, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background-color: #70000e;
+            border-color: #70000e;
+            transform: scale(1.1);
+        }
+
+        .nav-button:hover svg {
+            stroke: white;
+        }
+
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #70000e;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Dots Navigation */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(112, 0, 14, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #70000e;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .class-card {
+                flex: 0 0 calc(33.333% - 14px);
+                min-width: calc(33.333% - 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .section-header {
+                margin-bottom: 25px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .class-card {
+                flex: 0 0 calc(50% - 10px);
+                min-width: calc(50% - 10px);
+                height: 280px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .carousel-nav.prev {
+                left: 0;
+            }
+
+            .carousel-nav.next {
+                right: 0;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .class-styles-section {
+                padding: 30px 0 50px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .class-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+                height: 320px;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
+            }
+        }
+    
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F4EFE7;
+            overflow-x: hidden;
+        }
+
+        /* Color Variables */
+        :root {
+            --vanilla-bone: #E6DABE;
+            --deep-walnut: #4A2F1B;
+            --deep-navy: #0F1B4D;
+            --parchment: #F4EFE7;
+            --red: #70000e;
+        }
+
+        /* Class Formats Section */
+        .class-formats-section {
+            background-color: #ffffff;
+            padding: 40px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .formats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .formats-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .formats-view-all {
+            color: var(--deep-walnut);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .formats-view-all::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--deep-walnut);
+            transition: width 0.3s ease;
+        }
+
+        .formats-view-all:hover::after {
+            width: 100%;
+        }
+
+        /* Carousel Container */
+        .formats-carousel-wrapper {
+            position: relative;
+        }
+
+        .formats-carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .formats-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+        }
+
+        /* Class Card */
+        .formats-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            height: 320px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .formats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.1) 0%, rgba(112, 0, 14, 0.7) 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+            border-radius: 16px;
+        }
+
+        .formats-card:hover::before {
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.3) 0%, rgba(112, 0, 14, 0.85) 100%);
+        }
+
+        .formats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .formats-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            border-radius: 16px;
+        }
+
+        .formats-card:hover .formats-card-image {
+            transform: scale(1.08);
+        }
+
+        .formats-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 2;
+            color: white;
+        }
+
+        .formats-card-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .formats-card:hover .formats-card-title {
+            transform: translateY(-10px);
+        }
+
+        .formats-card-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .formats-duration {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffcccc;
+            letter-spacing: 0.5px;
+        }
+
+        .formats-level {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4px 12px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .formats-card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .formats-card:hover .formats-card-description {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+
+        /* Navigation Arrows */
+        .formats-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .formats-carousel-nav.prev {
+            left: -20px;
+        }
+
+        .formats-carousel-nav.next {
+            right: -20px;
+        }
+
+        .formats-nav-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(112, 0, 14, 0.08);
+            border: 1px solid rgba(112, 0, 14, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .formats-nav-button:hover {
+            background-color: #70000e;
+            border-color: #70000e;
+            transform: scale(1.1);
+        }
+
+        .formats-nav-button:hover svg {
+            stroke: white;
+        }
+
+        .formats-nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .formats-nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #70000e;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .formats-nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Dots Navigation */
+        .formats-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .formats-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(112, 0, 14, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .formats-dot.active {
+            background-color: #70000e;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .formats-card {
+                flex: 0 0 calc(33.333% - 14px);
+                min-width: calc(33.333% - 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .formats-container {
+                padding: 0 20px;
+            }
+
+            .formats-header {
+                margin-bottom: 25px;
+            }
+
+            .formats-title {
+                font-size: 1.8rem;
+            }
+
+            .formats-card {
+                flex: 0 0 calc(50% - 10px);
+                min-width: calc(50% - 10px);
+                height: 280px;
+            }
+
+            .formats-card-title {
+                font-size: 1.5rem;
+            }
+
+            .formats-carousel-nav.prev {
+                left: 0;
+            }
+
+            .formats-carousel-nav.next {
+                right: 0;
+            }
+
+            .formats-nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .formats-nav-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .class-formats-section {
+                padding: 30px 0 50px 0;
+            }
+
+            .formats-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .formats-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+                height: 320px;
+            }
+
+            .formats-card-title {
+                font-size: 1.6rem;
+            }
+
+            .formats-card-description {
+                font-size: 0.9rem;
+            }
+        }
+    
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F4EFE7;
+            overflow-x: hidden;
+        }
+
+        /* Color Variables */
+        :root {
+            --vanilla-bone: #E6DABE;
+            --deep-walnut: #4A2F1B;
+            --deep-navy: #0F1B4D;
+            --parchment: #F4EFE7;
+            --red: #70000e;
+        }
+
+        /* Titles Purchase Section */
+        .titles-purchase-section {
+            background-color: #ffffff;
+            padding: 40px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .titles-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .titles-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .titles-section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .titles-view-all {
+            color: #ffffff;
+            background-color: #70000e;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .titles-view-all:hover {
+            background-color: #8a0010;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(112, 0, 14, 0.3);
+        }
+
+        /* Carousel Container */
+        .titles-carousel-wrapper {
+            position: relative;
+        }
+
+        .titles-carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .titles-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+        }
+
+        /* Course Card */
+        .titles-course-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            background-color: #f8f8f8;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .titles-course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(112, 0, 14, 0.15);
+        }
+
+        .titles-card-image-wrapper {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .titles-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .titles-course-card:hover .titles-card-image {
+            transform: scale(1.08);
+        }
+
+        .titles-card-content {
+            padding: 24px;
+            background-color: #ffffff;
+        }
+
+        .titles-card-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2a2a2a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .titles-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .titles-video-count {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+            letter-spacing: 0.3px;
+        }
+
+        .titles-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 0.3px;
+        }
+
+        .titles-buy-button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .titles-buy-button:hover {
+            background-color: #8a0010;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(112, 0, 14, 0.3);
+        }
+
+        .titles-buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Navigation Arrows */
+        .titles-carousel-nav {
+            position: absolute;
+            top: 35%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .titles-carousel-nav.prev {
+            left: -20px;
+        }
+
+        .titles-carousel-nav.next {
+            right: -20px;
+        }
+
+        .titles-nav-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(112, 0, 14, 0.08);
+            border: 1px solid rgba(112, 0, 14, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .titles-nav-button:hover {
+            background-color: #70000e;
+            border-color: #70000e;
+            transform: scale(1.1);
+        }
+
+        .titles-nav-button:hover svg {
+            stroke: white;
+        }
+
+        .titles-nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .titles-nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #70000e;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .titles-nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Dots Navigation */
+        .titles-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .titles-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(112, 0, 14, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .titles-dot.active {
+            background-color: #70000e;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .titles-course-card {
+                flex: 0 0 calc(33.333% - 14px);
+                min-width: calc(33.333% - 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .titles-container {
+                padding: 0 20px;
+            }
+
+            .titles-header {
+                margin-bottom: 25px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .titles-section-title {
+                font-size: 1.8rem;
+            }
+
+            .titles-course-card {
+                flex: 0 0 calc(50% - 10px);
+                min-width: calc(50% - 10px);
+            }
+
+            .titles-card-image-wrapper {
+                height: 200px;
+            }
+
+            .titles-card-title {
+                font-size: 1rem;
+                min-height: 45px;
+            }
+
+            .titles-carousel-nav.prev {
+                left: 0;
+            }
+
+            .titles-carousel-nav.next {
+                right: 0;
+            }
+
+            .titles-nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .titles-nav-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titles-purchase-section {
+                padding: 30px 0 50px 0;
+            }
+
+            .titles-section-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .titles-course-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+
+            .titles-card-image-wrapper {
+                height: 220px;
+            }
+
+            .titles-card-title {
+                font-size: 0.95rem;
+            }
+
+            .titles-view-all {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <!-- Overlay del carrito -->
+    <div class="cart-sidebar-overlay" id="cart-overlay"></div>
+
+    <!-- Panel lateral del carrito -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h2>
+                <i class="fas fa-shopping-bag"></i>
+                Mi Carrito
+            </h2>
+            <button class="cart-close-btn" id="cart-close-btn" aria-label="Cerrar carrito">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cart-sidebar-content" id="cart-content">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+
+        <div class="cart-sidebar-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-amount" id="cart-total-amount">0,00 €</span>
+            </div>
+            <button class="cart-checkout-btn" id="cart-checkout-btn">
+                Finalizar Compra
+            </button>
+        </div>
+    </div>
+
+    <!-- Barra Superior - Redes Sociales -->
+    <div class="topbar">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/laura.eles/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@lauraeles" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@laura.eles" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="header" id="main-header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp" alt="ELES Pilates" />
+                </a>
+            </div>
+
+            <!-- Navegación Principal -->
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="club.html" class="nav-link">The Club</a></li>
+                    <li><a href="method.html" class="nav-link">The Method</a></li>
+                    <li><a href="workouts.html" class="nav-link">Workouts</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <!-- Botón de suscripción solo visible en tablet/móvil dentro del menú -->
+                    <li class="mobile-subscribe-item">
+                        <a href="#signup" class="nav-link subscribe-link">
+                            <i class="fas fa-star"></i> Suscríbete
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Zona de Acciones -->
+            <div class="header-actions">
+                <!-- Carrito de compras -->
+                <button class="cart-btn" aria-label="Carrito de compras" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+
+                <!-- Login -->
+                <button class="login-btn" aria-label="Iniciar sesión" id="login-btn"
+                        onclick="window.location.href='#profile'">
+                    <i class="fas fa-user"></i>
+                </button>
+
+                <!-- Botón de Suscripción (solo desktop) -->
+                <a href="#signup" class="subscribe-btn">
+                    <span>Subscribe</span>
+                </a>
+
+                <!-- Menú Hamburguesa (móvil/tablet) -->
+                <button class="menu-toggle" id="menu-toggle" aria-label="Menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // ============================================
+        // SISTEMA DE GESTIÓN DEL CARRITO
+        // ============================================
+        
+        class ShoppingCart {
+            constructor() {
+                this.items = this.loadCart();
+                this.init();
+            }
+
+            init() {
+                this.updateUI();
+                this.setupEventListeners();
+                
+                // Escuchar cambios en localStorage desde otras pestañas
+                window.addEventListener('storage', (e) => {
+                    if (e.key === 'elesCart') {
+                        this.items = this.loadCart();
+                        this.updateUI();
+                    }
+                });
+
+                // Evento personalizado para actualizar el carrito
+                window.addEventListener('cartUpdated', () => {
+                    this.items = this.loadCart();
+                    this.updateUI();
+                });
+            }
+
+            loadCart() {
+                try {
+                    const cart = localStorage.getItem('elesCart');
+                    return cart ? JSON.parse(cart) : [];
+                } catch (error) {
+                    console.error('Error al cargar el carrito:', error);
+                    return [];
+                }
+            }
+
+            saveCart() {
+                try {
+                    localStorage.setItem('elesCart', JSON.stringify(this.items));
+                    // Disparar evento personalizado
+                    window.dispatchEvent(new CustomEvent('cartUpdated'));
+                } catch (error) {
+                    console.error('Error al guardar el carrito:', error);
+                }
+            }
+
+            addItem(product) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += product.quantity || 1;
+                } else {
+                    this.items.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image || 'https://via.placeholder.com/80',
+                        quantity: product.quantity || 1
+                    });
+                }
+                
+                this.saveCart();
+                this.updateUI();
+                this.showNotification('Producto añadido al carrito');
+            }
+
+            removeItem(productId) {
+                this.items = this.items.filter(item => item.id !== productId);
+                this.saveCart();
+                this.updateUI();
+                this.showNotification('Producto eliminado del carrito');
+            }
+
+            updateQuantity(productId, newQuantity) {
+                const item = this.items.find(item => item.id === productId);
+                if (item) {
+                    if (newQuantity <= 0) {
+                        this.removeItem(productId);
+                    } else {
+                        item.quantity = newQuantity;
+                        this.saveCart();
+                        this.updateUI();
+                    }
+                }
+            }
+
+            getTotal() {
+                return this.items.reduce((total, item) => {
+                    return total + (item.price * item.quantity);
+                }, 0);
+            }
+
+            getTotalItems() {
+                return this.items.reduce((total, item) => total + item.quantity, 0);
+            }
+
+            clear() {
+                this.items = [];
+                this.saveCart();
+                this.updateUI();
+            }
+
+            updateUI() {
+                this.updateBadge();
+                this.updateSidebar();
+            }
+
+            updateBadge() {
+                const badge = document.getElementById('cart-badge');
+                const totalItems = this.getTotalItems();
+                
+                if (badge) {
+                    badge.textContent = totalItems;
+                    if (totalItems > 0) {
+                        badge.style.display = 'flex';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+
+            updateSidebar() {
+                const content = document.getElementById('cart-content');
+                const footer = document.getElementById('cart-footer');
+                const totalAmount = document.getElementById('cart-total-amount');
+
+                if (this.items.length === 0) {
+                    content.innerHTML = `
+                        <div class="cart-empty">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Tu carrito está vacío</p>
+                        </div>
+                    `;
+                    footer.style.display = 'none';
+                } else {
+                    content.innerHTML = this.items.map(item => `
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${item.price.toFixed(2)} €</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn" onclick="cart.updateQuantity('${item.id}', ${item.quantity - 1})">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="quantity-value">${item.quantity}</span>
+                                    <button class="quantity-btn" onclick="cart.updateQuantity('${item.id}', ${item.quantity + 1})">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button class="cart-item-remove" onclick="cart.removeItem('${item.id}')" aria-label="Eliminar producto">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `).join('');
+
+                    footer.style.display = 'block';
+                    totalAmount.textContent = `${this.getTotal().toFixed(2)} €`;
+                }
+            }
+
+            showNotification(message) {
+                // Puedes personalizar esto con un sistema de notificaciones más elaborado
+                console.log('✓ ' + message);
+            }
+
+            setupEventListeners() {
+                // Botón del carrito
+                const cartBtn = document.getElementById('cart-btn');
+                const cartSidebar = document.getElementById('cart-sidebar');
+                const cartOverlay = document.getElementById('cart-overlay');
+                const cartCloseBtn = document.getElementById('cart-close-btn');
+                const checkoutBtn = document.getElementById('cart-checkout-btn');
+
+                if (cartBtn) {
+                    cartBtn.addEventListener('click', () => this.openCart());
+                }
+
+                if (cartCloseBtn) {
+                    cartCloseBtn.addEventListener('click', () => this.closeCart());
+                }
+
+                if (cartOverlay) {
+                    cartOverlay.addEventListener('click', () => this.closeCart());
+                }
+
+                if (checkoutBtn) {
+                    checkoutBtn.addEventListener('click', () => {
+                        window.location.href = '#cart';
+                    });
+                }
+            }
+
+            openCart() {
+                const sidebar = document.getElementById('cart-sidebar');
+                const overlay = document.getElementById('cart-overlay');
+                
+                if (sidebar && overlay) {
+                    sidebar.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            closeCart() {
+                const sidebar = document.getElementById('cart-sidebar');
+                const overlay = document.getElementById('cart-overlay');
+                
+                if (sidebar && overlay) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        // Inicializar el carrito
+        const cart = new ShoppingCart();
+
+        // Exponer la API globalmente para que puedas usarla desde otras páginas
+        window.ELESCart = {
+            add: (product) => cart.addItem(product),
+            remove: (productId) => cart.removeItem(productId),
+            update: (productId, quantity) => cart.updateQuantity(productId, quantity),
+            clear: () => cart.clear(),
+            getItems: () => cart.items,
+            getTotal: () => cart.getTotal(),
+            getTotalItems: () => cart.getTotalItems()
+        };
+
+        // ============================================
+        // MENÚ MÓVIL Y NAVEGACIÓN
+        // ============================================
+        
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        const header = document.getElementById('main-header');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // MENÚ MÓVIL
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            
+            if (mainNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                
+                if (!link.classList.contains('subscribe-link')) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        // REDIMENSIONAMIENTO DE VENTANA
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const headerOffset = 130;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        console.log('✨ ELES Header con Sistema de Carrito cargado correctamente');
+        console.log('📦 API del Carrito disponible en: window.ELESCart');
+    </script>
+
+<!-- SECTION: WORKOUTS parte 1.html -->
+
+    <section class="class-styles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Class Styles</h2>
+            </div>
+
+            <div class="carousel-wrapper">
+                <!-- Previous Button -->
+                <div class="carousel-nav prev">
+                    <button class="nav-button prev-btn" id="prevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Card 1 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=800&fit=crop" alt="Sweat & Sculpt" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Sweat & Sculpt</h3>
+                                <div class="card-info">
+                                    <span class="video-count">33 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Combina ejercicios cardiovasculares intensos con movimientos de escultura muscular para maximizar la quema de calorías y tonificar todo el cuerpo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop" alt="Strength" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Strength</h3>
+                                <div class="card-info">
+                                    <span class="video-count">78 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Desarrolla fuerza funcional y resistencia muscular con secuencias diseñadas para aumentar tu poder físico de manera progresiva.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=800&fit=crop" alt="Sculpt" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Sculpt</h3>
+                                <div class="card-info">
+                                    <span class="video-count">56 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Enfócate en la definición muscular con movimientos precisos que esculpen y alargan cada grupo muscular para crear líneas elegantes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&h=800&fit=crop" alt="Stronger" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Stronger</h3>
+                                <div class="card-info">
+                                    <span class="video-count">64 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Desafía tus límites con rutinas avanzadas que construyen fuerza excepcional y mejoran tu rendimiento físico integral.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=800&fit=crop" alt="Core Power" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Core Power</h3>
+                                <div class="card-info">
+                                    <span class="video-count">45 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Fortalece tu centro con ejercicios específicos que desarrollan un core potente, mejorando tu estabilidad y postura.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=600&h=800&fit=crop" alt="Flexibility Flow" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Flexibility Flow</h3>
+                                <div class="card-info">
+                                    <span class="video-count">38 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Aumenta tu rango de movimiento y flexibilidad con secuencias fluidas que alargan y relajan los músculos profundamente.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop" alt="Balance & Control" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Balance & Control</h3>
+                                <div class="card-info">
+                                    <span class="video-count">52 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Perfecciona tu equilibrio y coordinación con ejercicios que desarrollan control corporal preciso y conciencia de movimiento.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="carousel-nav next">
+                    <button class="nav-button next-btn" id="nextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Functionality
+        class Carousel {
+            constructor() {
+                this.track = document.getElementById('carouselTrack');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.dotsContainer = document.getElementById('carouselDots');
+                
+                this.cards = document.querySelectorAll('.class-card');
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                this.init();
+            }
+
+            getCardsPerView() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                if (width <= 1200) return 3;
+                return 4;
+            }
+
+            init() {
+                this.createDots();
+                this.updateButtons();
+                this.attachEvents();
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events for mobile
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diff = startX - currentX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+
+            goToPage(index) {
+                if (index < 0 || index >= this.totalPages) return;
+                
+                this.currentIndex = index;
+                const cardWidth = this.cards[0].offsetWidth;
+                const gap = 20;
+                const offset = -(this.currentIndex * this.cardsPerView * (cardWidth + gap));
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateButtons();
+                this.updateDots();
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.goToPage(this.currentIndex - 1);
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.goToPage(this.currentIndex + 1);
+                }
+            }
+
+            updateButtons() {
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex === this.totalPages - 1);
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            handleResize() {
+                const newCardsPerView = this.getCardsPerView();
+                if (newCardsPerView !== this.cardsPerView) {
+                    this.cardsPerView = newCardsPerView;
+                    this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                    this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                    this.createDots();
+                    this.goToPage(this.currentIndex);
+                }
+            }
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new Carousel();
+        });
+    </script>
+
+
+<!-- SECTION: WORKOUTS parte 2.html -->
+
+    <section class="class-formats-section">
+        <div class="formats-container">
+            <div class="formats-header">
+                <h2 class="formats-title">Class Formats</h2>
+            </div>
+
+            <div class="formats-carousel-wrapper">
+                <!-- Previous Button -->
+                <div class="formats-carousel-nav prev">
+                    <button class="formats-nav-button prev-btn" id="formatsPrevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="formats-carousel-container">
+                    <div class="formats-carousel-track" id="formatsCarouselTrack">
+                        <!-- Card 1 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=800&fit=crop" alt="Reformer Pilates" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Reformer Pilates</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">45-60 min</span>
+                                    <span class="formats-level">Todos los niveles</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Clases en máquina reformer que utilizan resistencia ajustable para un entrenamiento completo y efectivo, ideal para todos los niveles.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=800&fit=crop" alt="Mat Pilates" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Mat Pilates</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">50 min</span>
+                                    <span class="formats-level">Principiante</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Sesiones en colchoneta enfocadas en el control corporal y la conciencia del movimiento, perfectas para comenzar tu práctica.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop" alt="Barre Fusion" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Barre Fusion</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">55 min</span>
+                                    <span class="formats-level">Intermedio</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Combina pilates con ballet para crear líneas largas y tonificadas, mejorando la postura y la gracia en el movimiento.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&h=800&fit=crop" alt="Express Classes" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Express Classes</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">30 min</span>
+                                    <span class="formats-level">Todos los niveles</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Sesiones intensivas y eficientes diseñadas para maximizar resultados en menos tiempo, perfectas para agendas ocupadas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=800&fit=crop" alt="Private Sessions" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Private Sessions</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">60 min</span>
+                                    <span class="formats-level">Personalizado</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Atención individualizada con programas personalizados según tus objetivos específicos y necesidades particulares.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=600&h=800&fit=crop" alt="Prenatal Pilates" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Prenatal Pilates</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">45 min</span>
+                                    <span class="formats-level">Especializado</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Clases especialmente diseñadas para embarazadas, enfocadas en fortalecer y preparar el cuerpo para el parto de manera segura.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="formats-card">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop" alt="Group Classes" class="formats-card-image">
+                            <div class="formats-card-content">
+                                <h3 class="formats-card-title">Group Classes</h3>
+                                <div class="formats-card-info">
+                                    <span class="formats-duration">55 min</span>
+                                    <span class="formats-level">Variado</span>
+                                </div>
+                                <p class="formats-card-description">
+                                    Sesiones grupales dinámicas que fomentan la motivación colectiva mientras mantienes atención personalizada del instructor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="formats-carousel-nav next">
+                    <button class="formats-nav-button next-btn" id="formatsNextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="formats-carousel-dots" id="formatsCarouselDots"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Functionality for Formats
+        class FormatsCarousel {
+            constructor() {
+                this.track = document.getElementById('formatsCarouselTrack');
+                this.prevBtn = document.getElementById('formatsPrevBtn');
+                this.nextBtn = document.getElementById('formatsNextBtn');
+                this.dotsContainer = document.getElementById('formatsCarouselDots');
+                
+                this.cards = document.querySelectorAll('.formats-card');
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                this.init();
+            }
+
+            getCardsPerView() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                if (width <= 1200) return 3;
+                return 4;
+            }
+
+            init() {
+                this.createDots();
+                this.updateButtons();
+                this.attachEvents();
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('formats-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events for mobile
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diff = startX - currentX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+
+            goToPage(index) {
+                if (index < 0 || index >= this.totalPages) return;
+                
+                this.currentIndex = index;
+                const cardWidth = this.cards[0].offsetWidth;
+                const gap = 20;
+                const offset = -(this.currentIndex * this.cardsPerView * (cardWidth + gap));
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateButtons();
+                this.updateDots();
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.goToPage(this.currentIndex - 1);
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.goToPage(this.currentIndex + 1);
+                }
+            }
+
+            updateButtons() {
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex === this.totalPages - 1);
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.formats-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            handleResize() {
+                const newCardsPerView = this.getCardsPerView();
+                if (newCardsPerView !== this.cardsPerView) {
+                    this.cardsPerView = newCardsPerView;
+                    this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                    this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                    this.createDots();
+                    this.goToPage(this.currentIndex);
+                }
+            }
+        }
+
+        // Initialize formats carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FormatsCarousel();
+        });
+    </script>
+
+
+<!-- SECTION: WORKOUTS parte 3.html -->
+
+    <section class="titles-purchase-section">
+        <div class="titles-container">
+            <div class="titles-header">
+                <h2 class="titles-section-title">Títulos Disponibles</h2>
+            </div>
+
+            <div class="titles-carousel-wrapper">
+                <!-- Previous Button -->
+                <div class="titles-carousel-nav prev">
+                    <button class="titles-nav-button prev-btn" id="titlesPrevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="titles-carousel-container">
+                    <div class="titles-carousel-track" id="titlesCarouselTrack">
+                        <!-- Card 1 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop" alt="21 Day Sculpt Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">21 Day Sculpt & Strengthen Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">21 videos</span>
+                                    <span class="titles-price">$84.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop" alt="15 Day Sweat Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">15 Day Sweat & Sculpt Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">15 videos</span>
+                                    <span class="titles-price">$64.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop" alt="30 Day Sculpt Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">30 Day Sculpt, Sweat & Strengthen Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">30 videos</span>
+                                    <span class="titles-price">$74.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&h=400&fit=crop" alt="Strong Starter Pack" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Strong Starter Pack</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">8 videos</span>
+                                    <span class="titles-price">$44.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=400&fit=crop" alt="Core Power Program" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Core Power Intensive Program</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">12 videos</span>
+                                    <span class="titles-price">$54.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=600&h=400&fit=crop" alt="Flexibility Master" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Flexibility Master Series</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">10 videos</span>
+                                    <span class="titles-price">$49.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop" alt="Balance Bundle" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Balance & Control Bundle</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">16 videos</span>
+                                    <span class="titles-price">$69.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=400&fit=crop" alt="Ultimate Collection" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Ultimate Pilates Collection</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">50 videos</span>
+                                    <span class="titles-price">$149.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="titles-carousel-nav next">
+                    <button class="titles-nav-button next-btn" id="titlesNextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="titles-carousel-dots" id="titlesCarouselDots"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Functionality for Titles/Courses
+        class TitlesCarousel {
+            constructor() {
+                this.track = document.getElementById('titlesCarouselTrack');
+                this.prevBtn = document.getElementById('titlesPrevBtn');
+                this.nextBtn = document.getElementById('titlesNextBtn');
+                this.dotsContainer = document.getElementById('titlesCarouselDots');
+                
+                this.cards = document.querySelectorAll('.titles-course-card');
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                this.init();
+            }
+
+            getCardsPerView() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                if (width <= 1200) return 3;
+                return 4;
+            }
+
+            init() {
+                this.createDots();
+                this.updateButtons();
+                this.attachEvents();
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('titles-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events for mobile
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diff = startX - currentX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+
+            goToPage(index) {
+                if (index < 0 || index >= this.totalPages) return;
+                
+                this.currentIndex = index;
+                const cardWidth = this.cards[0].offsetWidth;
+                const gap = 20;
+                const offset = -(this.currentIndex * this.cardsPerView * (cardWidth + gap));
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateButtons();
+                this.updateDots();
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.goToPage(this.currentIndex - 1);
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.goToPage(this.currentIndex + 1);
+                }
+            }
+
+            updateButtons() {
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex === this.totalPages - 1);
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.titles-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            handleResize() {
+                const newCardsPerView = this.getCardsPerView();
+                if (newCardsPerView !== this.cardsPerView) {
+                    this.cardsPerView = newCardsPerView;
+                    this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                    this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                    this.createDots();
+                    this.goToPage(this.currentIndex);
+                }
+            }
+        }
+
+        // Initialize titles carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TitlesCarousel();
+        });
+    </script>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#inicio">
+                        <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp" alt="ELES Pilates" />
+                    </a>
+                </div>
+
+                <div class="footer-links">
+                    <nav>
+                        <a href="#privacy">Privacy</a>
+                        <span class="separator"></span>
+                        <a href="#cookies">Cookies</a>
+                    </nav>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/laura.eles/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@lauraeles" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@laura.eles" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eles Club. Todos los derechos reservados.</p>
+                <p class="footer-credits">Diseñado por<a href="https://www.dominacode.com" target="_blank" rel="noopener noreferrer">Dominacode</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const footerElements = document.querySelectorAll('.footer-logo, .footer-links, .footer-social, .footer-bottom');
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '0';
+                            entry.target.style.transform = 'translateY(20px)';
+                            entry.target.style.transition = 'all 0.5s ease-out';
+                            requestAnimationFrame(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            });
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            footerElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        console.log('✨ ELES Footer Premium cargado correctamente');
+    </script>
+
+</body>
+</html>

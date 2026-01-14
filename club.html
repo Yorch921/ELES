@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELES Pilates - Index</title>
+    <title>ELES Pilates - Club</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         
@@ -1244,186 +1244,499 @@
         }
     
 
-        /* Home Hero Editorial Refactor - Side Text */
-        .home-hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            /* Vertically center */
-            justify-content: center;
-            /* Horizontally center main content */
-            overflow: hidden;
-            background-color: var(--dark-gray);
-            margin-top: -130px;
-            /* Compensate for header */
-            padding-top: 0;
+        /* Club Section Specific Styles */
+
+        :root {
+            --burgundy-red: #70000e;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --cream: #FAF9F6;
+            --white: #ffffff;
         }
 
-        /* Background Image */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Premium Pilates Image */
-            background-image: url('https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=2026&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center center;
-            z-index: 0;
-        }
-
-        /* Overlay */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Gradient for text readability */
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6) 100%);
-            z-index: 1;
-        }
-
-        /* Main Central Container (Title + CTA) */
-        .hero-main-content {
-            position: relative;
-            z-index: 2;
+        .club-hero {
+            padding: 100px 20px 80px;
             text-align: center;
+            background-color: var(--cream, #FAF9F6);
+            position: relative;
+        }
+
+        .club-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--burgundy-red, #70000e);
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+            background: none !important;
+        }
+
+        .club-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--medium-gray, #666666);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            background: none !important;
+        }
+
+        /* Memberships Grid */
+        .memberships-section {
+            padding: 0 20px 120px;
+            background-color: var(--cream, #FAF9F6);
+        }
+
+        .memberships-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .plan-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
-            /* Shift slightly left to balance side text */
-            margin-right: 150px;
-            animation: fadeInUp 1s ease-out;
-            padding: 0 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            position: relative;
+            height: 100%;
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 110px;
+        .plan-card * {
+            background-color: transparent;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .plan-card.premium {
+            border: 2px solid var(--burgundy-red, #70000e);
+            background: #fffcfc;
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 25px 60px rgba(112, 0, 14, 0.08);
+        }
+
+        .plan-card.premium:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .badge-recommended {
+            position: absolute;
+            top: -16px;
+            background: var(--burgundy-red, #70000e) !important;
+            color: #ffffff !important;
+            font-size: 13px;
             font-weight: 700;
-            letter-spacing: -3px;
-            line-height: 0.9;
-            margin: 0;
             text-transform: uppercase;
-            color: #ffffff;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(112, 0, 14, 0.2);
         }
 
-        .hero-subtitle {
+        .plan-name {
             font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            font-weight: 400;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.95);
-            margin: 0;
-            letter-spacing: 0.5px;
+            font-size: 32px;
+            color: var(--dark-gray, #333333);
+            margin-bottom: 15px;
+            font-weight: 600;
+            background: none !important;
         }
 
-        /* CTA Button */
-        .hero-cta {
-            margin-top: 15px;
-            display: inline-flex;
+        .plan-description {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: var(--medium-gray, #666666);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            min-height: 50px;
+            background: none !important;
+        }
+
+        .plan-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--burgundy-red, #70000e);
+            margin-bottom: 30px;
+            background: none !important;
+        }
+
+        .plan-period {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--medium-gray, #666666);
+            vertical-align: middle;
+            background: none !important;
+        }
+
+        .plan-features {
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            color: var(--medium-gray, #666666);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            flex-grow: 1;
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 25px;
+            background: none !important;
+        }
+
+        .plan-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: none !important;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--burgundy-red, #70000e);
+            font-weight: bold;
+        }
+
+        .plan-btn {
+            display: inline-block;
+            background-color: transparent !important;
+            color: var(--burgundy-red, #70000e) !important;
+            border: 1px solid var(--burgundy-red, #70000e);
+            padding: 16px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .plan-card.premium .plan-btn,
+        .plan-btn:hover {
+            background-color: var(--burgundy-red, #70000e) !important;
+            color: #ffffff !important;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 100px 20px;
+            background-color: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .programs-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            background: none !important;
+        }
+
+        .programs-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--dark-gray, #333333);
+            margin-bottom: 20px;
+            background: none !important;
+        }
+
+        .programs-intro {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: var(--medium-gray, #666666);
+            line-height: 1.7;
+            background: none !important;
+        }
+
+        .programs-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .program-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .program-card * {
+            background: transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0 !important;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .program-content {
+            padding: 35px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff !important;
+        }
+
+        .program-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin-bottom: 12px;
+            color: var(--dark-gray, #333333);
+            background: none !important;
+        }
+
+        .program-desc {
+            font-size: 16px;
+            color: var(--medium-gray, #666666);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex-grow: 1;
+            background: none !important;
+        }
+
+        .program-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            background: none !important;
+        }
+
+        .program-price {
+            font-weight: 700;
+            color: var(--burgundy-red, #70000e);
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            background: none !important;
+        }
+
+        .program-link {
+            text-decoration: none;
+            color: var(--dark-gray, #333333);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+            background: none !important;
+        }
+
+        .program-link:hover {
+            gap: 12px;
+            color: var(--burgundy-red, #70000e);
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
-            background-color: var(--burgundy-red, #70000e);
-            color: #ffffff;
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease-out;
+            text-align: center;
+        }
+
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--burgundy-red);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--burgundy-red);
+            margin-bottom: 10px;
+        }
+
+        .modal-text {
+            color: var(--medium-gray);
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
             font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--burgundy-red);
+        }
+
+        .submit-btn {
+            background-color: var(--burgundy-red);
+            color: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
             font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
         }
 
-        .hero-cta:hover {
-            background-color: #ffffff;
-            color: var(--burgundy-red, #70000e);
-            transform: translateY(-2px);
+        .submit-btn:hover {
+            background-color: #50000a;
         }
 
-        /* Side Description Text (Right) */
-        .hero-side-text {
-            position: absolute;
-            right: 8%;
-            bottom: 15%;
-            /* Positioned lower right as per typical layout */
-            z-index: 2;
-            width: 400px;
-            /* Widened for larger text */
-            text-align: left;
-            animation: fadeIn 1.5s ease-out;
-            border-left: 3px solid var(--burgundy-red);
-            /* Thicker accent */
-            padding-left: 30px;
-        }
-
-        .hero-description {
-            /* Updated Typography */
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            /* Increased from 20px */
-            line-height: 1.5;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.95);
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .success-message {
+            display: none;
+            color: #27ae60;
+            font-weight: 600;
+            margin-top: 20px;
+            animation: fadeIn 0.5s;
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .hero-main-content {
-                margin-right: 0;
-                /* Center back */
+        @media (max-width: 1024px) {
+            .plan-card.premium {
+                transform: none;
             }
 
-            .hero-side-text {
-                position: relative;
-                right: auto;
-                bottom: auto;
-                width: 100%;
-                max-width: 600px;
-                text-align: center;
-                border-left: none;
-                border-top: 2px solid var(--burgundy-red);
-                padding-left: 0;
-                padding-top: 25px;
-                margin-top: 40px;
-            }
-
-            .home-hero {
-                flex-direction: column;
-                padding-top: 100px;
+            .plan-card.premium:hover {
+                transform: translateY(-5px);
             }
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 58px;
+            .club-title {
+                font-size: 48px;
             }
 
-            .hero-subtitle {
-                font-size: 26px;
+            .programs-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero-description {
-                font-size: 20px;
+            .memberships-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
 
-            .hero-side-text {
-                padding: 20px;
-                margin-top: 30px;
+            .modal-content {
+                padding: 30px 20px;
             }
         }
     
@@ -1855,31 +2168,224 @@
         console.log('📦 API del Carrito disponible en: window.ELESCart');
     </script>
 
-<!-- SECTION: HOME_hero.html -->
+<!-- SECTION: CLUB_content.html -->
 
-    <section class="home-hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
 
-        <!-- Central Axis: Title, Subtitle, CTA -->
-        <div class="hero-main-content">
-            <h1 class="hero-title">ELES CLUB</h1>
-            <h2 class="hero-subtitle">Hybrid Pilates para mujeres reales</h2>
+    <!-- Hero Section -->
+    <section class="club-hero">
+        <h1 class="club-title">THE CLUB</h1>
+        <p class="club-subtitle">
+            Cada mujer es distinta y su camino también. En ELES CLUB hemos diseñado diferentes espacios para que
+            encuentres exactamente lo que necesitas: desde entrenar a tu ritmo con total flexibilidad, hasta vivir un
+            proceso de transformación profunda con acompañamiento personal.
+        </p>
+    </section>
 
-            <a href="#signup" class="hero-cta">
-                JOIN THE CLUB
-            </a>
-        </div>
+    <!-- Memberships -->
+    <section class="memberships-section">
+        <div class="memberships-container">
 
-        <!-- Right Side Description Text -->
-        <div class="hero-side-text">
-            <p class="hero-description">
-                ELES CLUB es un estudio online de Hybrid Pilates diseñado para mujeres reales.
-                Clases dinámicas, funcionales y accesibles que tonifican, fortalecen y cuidan tu bienestar integral.
-                Entrena cuando y donde quieras y consigue resultados visibles con rutinas adaptadas a tu día a día.
-            </p>
+            <!-- Plan Basic -->
+            <div class="plan-card">
+                <div class="plan-name">Basic Plan</div>
+                <p class="plan-description">
+                    Ideal para comenzar a cuidar de ti con flexibilidad. Accede a una selección esencial de clases y
+                    mantén tu constancia sin presiones.
+                </p>
+                <div class="plan-price">29€<span class="plan-period">/mes</span></div>
+
+                <ul class="plan-features">
+                    <li>Selección de clases "Essentials"</li>
+                    <li>2 nuevos workouts semanales</li>
+                    <li>Acceso desde cualquier dispositivo</li>
+                    <li>Guía de iniciación al método</li>
+                </ul>
+                <a href="#signup" class="plan-btn">Elegir Plan Básico</a>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="plan-card premium">
+                <div class="badge-recommended">Más Elegido</div>
+                <div class="plan-name">Premium Club</div>
+                <p class="plan-description">
+                    La experiencia completa. Accede a toda la librería de contenidos y profundiza en tu práctica con
+                    nuevos desafíos cada mes.
+                </p>
+                <div class="plan-price">49€<span class="plan-period">/mes</span></div>
+
+                <ul class="plan-features">
+                    <li><strong>Acceso ilimitado</strong> a +200 clases</li>
+                    <li>Nuevos programas cada mes</li>
+                    <li>Calendarios de entrenamiento</li>
+                    <li>Comunidad privada ELES</li>
+                    <li>Prioridad en eventos y retiros</li>
+                </ul>
+                <a href="#signup" class="plan-btn">Acceso Completo</a>
+            </div>
+
+            <!-- Wellness Coaching -->
+            <div class="plan-card">
+                <div class="plan-name">Wellness Coaching</div>
+                <p class="plan-description">
+                    Un programa exclusivo de acompañamiento 1 a 1 para quienes buscan una transformación profunda y
+                    personalizada de cuerpo y mente.
+                </p>
+
+                <div
+                    style="margin-bottom: 30px; font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark-gray, #333333); height: 57px; display: flex; align-items: center; justify-content: center; background: none;">
+                    Acceso bajo solicitud
+                </div>
+
+                <ul class="plan-features">
+                    <li>Plan de acción 100% personalizado</li>
+                    <li>Seguimiento semanal individual</li>
+                    <li>Estrategia de nutrición y hábitos</li>
+                    <li>Contacto directo con Laura</li>
+                </ul>
+                <!-- Changed to Button ID for JS Modal -->
+                <button id="btn-wellness-coaching" class="plan-btn" style="border-style: solid;">Solicitar
+                    Acceso</button>
+            </div>
+
         </div>
     </section>
+
+    <!-- One-time Programs -->
+    <section class="programs-section">
+        <div class="programs-header">
+            <h2 class="programs-title">Experiencias y Programas</h2>
+            <p class="programs-intro">
+                ¿Buscas un objetivo concreto o prefieres no suscribirte? Descubre nuestros programas intensivos de pago
+                único. Retos diseñados para resetear tu cuerpo y mente en tiempos específicos, sin ataduras.
+            </p>
+        </div>
+
+        <div class="programs-grid">
+
+            <div class="program-card">
+                <div class="program-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1544367563-12123d8966cd?w=800&q=80');">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">7 Days Detox</h3>
+                    <p class="program-desc">Una semana para reiniciar. 7 días de movimiento fluido y alimentación
+                        consciente para eliminar la inflamación y recuperar tu energía vital.</p>
+                    <div class="program-meta">
+                        <span class="program-price">19€</span>
+                        <a href="#program-reset" class="program-link">Ver Programa <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <div class="program-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80');">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">21 Days Transformation</h3>
+                    <p class="program-desc">El tiempo exacto para crear un hábito. 3 semanas de entrenamiento progresivo
+                        de fuerza y pilates para transformar tu silueta.</p>
+                    <div class="program-meta">
+                        <span class="program-price">39€</span>
+                        <a href="#program-21" class="program-link">Ver Programa <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wellness Modal -->
+    <div id="wellnessModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Wellness Coaching</h2>
+            <p class="modal-text">Déjanos tu email para entrar en la lista de espera. Te contactaremos personalmente
+                cuando se abran nuevas plazas.</p>
+
+            <form id="wellnessForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Tu Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="ejemplo@correo.com"
+                        required>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Unirme a la lista</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> ¡Gracias! Te hemos añadido a la lista.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById("wellnessModal");
+            var btn = document.getElementById("btn-wellness-coaching");
+            var span = document.getElementsByClassName("close-modal")[0];
+            var form = document.getElementById("wellnessForm");
+            var successMsg = document.getElementById("successMessage");
+            var submitBtn = document.getElementById("submitBtn");
+
+            if (btn) {
+                btn.onclick = function (e) {
+                    e.preventDefault();
+                    modal.classList.add('show');
+                }
+            }
+
+            if (span) {
+                span.onclick = function () {
+                    modal.classList.remove('show');
+                    // Reset form on close
+                    setTimeout(() => {
+                        form.style.display = 'block';
+                        successMsg.style.display = 'none';
+                        form.reset();
+                    }, 500);
+                }
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.classList.remove('show');
+                }
+            }
+
+            // Mock Database Submission
+            if (form) {
+                form.onsubmit = function (e) {
+                    e.preventDefault();
+                    var email = document.getElementById('email').value;
+
+                    // Simulate loading state
+                    submitBtn.innerHTML = 'Guardando...';
+
+                    setTimeout(function () {
+                        // Simulate successful DB save
+                        console.log("Saving email to DB:", email);
+
+                        // Show success UI
+                        form.style.display = 'none';
+                        successMsg.style.display = 'block';
+                        submitBtn.innerHTML = 'Unirme a la lista'; // Reset text
+
+                        // Optional: Close modal automatically after a few seconds
+                        // setTimeout(function() {
+                        //     modal.classList.remove('show');
+                        //     form.style.display = 'block';
+                        //     successMsg.style.display = 'none';
+                        //     form.reset();
+                        // }, 3000);
+
+                    }, 1500);
+                }
+            }
+        });
+    </script>
+
 
 
     <footer class="footer">

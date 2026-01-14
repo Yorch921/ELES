@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Styles - ELES Pilates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F4EFE7;
+            overflow-x: hidden;
+        }
+
+        /* Color Variables */
+        :root {
+            --vanilla-bone: #E6DABE;
+            --deep-walnut: #4A2F1B;
+            --deep-navy: #0F1B4D;
+            --parchment: #F4EFE7;
+            --red: #70000e;
+        }
+
+        /* Class Styles Section */
+        .class-styles-section {
+            background-color: #ffffff;
+            padding: 40px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .view-all {
+            color: var(--deep-walnut);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .view-all::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--deep-walnut);
+            transition: width 0.3s ease;
+        }
+
+        .view-all:hover::after {
+            width: 100%;
+        }
+
+        /* Carousel Container */
+        .carousel-wrapper {
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+        }
+
+        /* Class Card */
+        .class-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            height: 320px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.1) 0%, rgba(112, 0, 14, 0.7) 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+
+        .class-card:hover::before {
+            background: linear-gradient(to bottom, rgba(112, 0, 14, 0.3) 0%, rgba(112, 0, 14, 0.85) 100%);
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .class-card:hover .card-image {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 2;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .class-card:hover .card-title {
+            transform: translateY(-10px);
+        }
+
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .video-count {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffcccc;
+            letter-spacing: 0.5px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .class-card:hover .card-description {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+
+        /* Navigation Arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-nav.prev {
+            left: -20px;
+        }
+
+        .carousel-nav.next {
+            right: -20px;
+        }
+
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(112, 0, 14, 0.08);
+            border: 1px solid rgba(112, 0, 14, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background-color: #70000e;
+            border-color: #70000e;
+            transform: scale(1.1);
+        }
+
+        .nav-button:hover svg {
+            stroke: white;
+        }
+
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #70000e;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Dots Navigation */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(112, 0, 14, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #70000e;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .class-card {
+                flex: 0 0 calc(33.333% - 14px);
+                min-width: calc(33.333% - 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .section-header {
+                margin-bottom: 25px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .class-card {
+                flex: 0 0 calc(50% - 10px);
+                min-width: calc(50% - 10px);
+                height: 280px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .carousel-nav.prev {
+                left: 0;
+            }
+
+            .carousel-nav.next {
+                right: 0;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .class-styles-section {
+                padding: 30px 0 50px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .class-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+                height: 320px;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="class-styles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Class Styles</h2>
+            </div>
+
+            <div class="carousel-wrapper">
+                <!-- Previous Button -->
+                <div class="carousel-nav prev">
+                    <button class="nav-button prev-btn" id="prevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Card 1 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=800&fit=crop" alt="Sweat & Sculpt" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Sweat & Sculpt</h3>
+                                <div class="card-info">
+                                    <span class="video-count">33 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Combina ejercicios cardiovasculares intensos con movimientos de escultura muscular para maximizar la quema de calorías y tonificar todo el cuerpo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop" alt="Strength" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Strength</h3>
+                                <div class="card-info">
+                                    <span class="video-count">78 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Desarrolla fuerza funcional y resistencia muscular con secuencias diseñadas para aumentar tu poder físico de manera progresiva.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=800&fit=crop" alt="Sculpt" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Sculpt</h3>
+                                <div class="card-info">
+                                    <span class="video-count">56 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Enfócate en la definición muscular con movimientos precisos que esculpen y alargan cada grupo muscular para crear líneas elegantes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&h=800&fit=crop" alt="Stronger" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Stronger</h3>
+                                <div class="card-info">
+                                    <span class="video-count">64 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Desafía tus límites con rutinas avanzadas que construyen fuerza excepcional y mejoran tu rendimiento físico integral.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=800&fit=crop" alt="Core Power" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Core Power</h3>
+                                <div class="card-info">
+                                    <span class="video-count">45 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Fortalece tu centro con ejercicios específicos que desarrollan un core potente, mejorando tu estabilidad y postura.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=600&h=800&fit=crop" alt="Flexibility Flow" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Flexibility Flow</h3>
+                                <div class="card-info">
+                                    <span class="video-count">38 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Aumenta tu rango de movimiento y flexibilidad con secuencias fluidas que alargan y relajan los músculos profundamente.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="class-card">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=800&fit=crop" alt="Balance & Control" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-title">Balance & Control</h3>
+                                <div class="card-info">
+                                    <span class="video-count">52 videos</span>
+                                </div>
+                                <p class="card-description">
+                                    Perfecciona tu equilibrio y coordinación con ejercicios que desarrollan control corporal preciso y conciencia de movimiento.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="carousel-nav next">
+                    <button class="nav-button next-btn" id="nextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Functionality
+        class Carousel {
+            constructor() {
+                this.track = document.getElementById('carouselTrack');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.dotsContainer = document.getElementById('carouselDots');
+                
+                this.cards = document.querySelectorAll('.class-card');
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                this.init();
+            }
+
+            getCardsPerView() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                if (width <= 1200) return 3;
+                return 4;
+            }
+
+            init() {
+                this.createDots();
+                this.updateButtons();
+                this.attachEvents();
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events for mobile
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diff = startX - currentX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+
+            goToPage(index) {
+                if (index < 0 || index >= this.totalPages) return;
+                
+                this.currentIndex = index;
+                const cardWidth = this.cards[0].offsetWidth;
+                const gap = 20;
+                const offset = -(this.currentIndex * this.cardsPerView * (cardWidth + gap));
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateButtons();
+                this.updateDots();
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.goToPage(this.currentIndex - 1);
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.goToPage(this.currentIndex + 1);
+                }
+            }
+
+            updateButtons() {
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex === this.totalPages - 1);
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            handleResize() {
+                const newCardsPerView = this.getCardsPerView();
+                if (newCardsPerView !== this.cardsPerView) {
+                    this.cardsPerView = newCardsPerView;
+                    this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                    this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                    this.createDots();
+                    this.goToPage(this.currentIndex);
+                }
+            }
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new Carousel();
+        });
+    </script>
+</body>
+</html>
