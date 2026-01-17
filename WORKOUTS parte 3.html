@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Títulos Disponibles - ELES Pilates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F4EFE7;
+            overflow-x: hidden;
+        }
+
+        /* Color Variables */
+        :root {
+            --vanilla-bone: #E6DABE;
+            --deep-walnut: #4A2F1B;
+            --deep-navy: #0F1B4D;
+            --parchment: #F4EFE7;
+            --red: #70000e;
+        }
+
+        /* Titles Purchase Section */
+        .titles-purchase-section {
+            background-color: #ffffff;
+            padding: 40px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .titles-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .titles-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .titles-section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .titles-view-all {
+            color: #ffffff;
+            background-color: #70000e;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .titles-view-all:hover {
+            background-color: #8a0010;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(112, 0, 14, 0.3);
+        }
+
+        /* Carousel Container */
+        .titles-carousel-wrapper {
+            position: relative;
+        }
+
+        .titles-carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .titles-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+        }
+
+        /* Course Card */
+        .titles-course-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: calc(25% - 15px);
+            background-color: #f8f8f8;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .titles-course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(112, 0, 14, 0.15);
+        }
+
+        .titles-card-image-wrapper {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .titles-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .titles-course-card:hover .titles-card-image {
+            transform: scale(1.08);
+        }
+
+        .titles-card-content {
+            padding: 24px;
+            background-color: #ffffff;
+        }
+
+        .titles-card-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2a2a2a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .titles-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .titles-video-count {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+            letter-spacing: 0.3px;
+        }
+
+        .titles-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 0.3px;
+        }
+
+        .titles-buy-button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .titles-buy-button:hover {
+            background-color: #8a0010;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(112, 0, 14, 0.3);
+        }
+
+        .titles-buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Navigation Arrows */
+        .titles-carousel-nav {
+            position: absolute;
+            top: 35%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .titles-carousel-nav.prev {
+            left: -20px;
+        }
+
+        .titles-carousel-nav.next {
+            right: -20px;
+        }
+
+        .titles-nav-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(112, 0, 14, 0.08);
+            border: 1px solid rgba(112, 0, 14, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .titles-nav-button:hover {
+            background-color: #70000e;
+            border-color: #70000e;
+            transform: scale(1.1);
+        }
+
+        .titles-nav-button:hover svg {
+            stroke: white;
+        }
+
+        .titles-nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .titles-nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #70000e;
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .titles-nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Dots Navigation */
+        .titles-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .titles-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(112, 0, 14, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .titles-dot.active {
+            background-color: #70000e;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .titles-course-card {
+                flex: 0 0 calc(33.333% - 14px);
+                min-width: calc(33.333% - 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .titles-container {
+                padding: 0 20px;
+            }
+
+            .titles-header {
+                margin-bottom: 25px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .titles-section-title {
+                font-size: 1.8rem;
+            }
+
+            .titles-course-card {
+                flex: 0 0 calc(50% - 10px);
+                min-width: calc(50% - 10px);
+            }
+
+            .titles-card-image-wrapper {
+                height: 200px;
+            }
+
+            .titles-card-title {
+                font-size: 1rem;
+                min-height: 45px;
+            }
+
+            .titles-carousel-nav.prev {
+                left: 0;
+            }
+
+            .titles-carousel-nav.next {
+                right: 0;
+            }
+
+            .titles-nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .titles-nav-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titles-purchase-section {
+                padding: 30px 0 50px 0;
+            }
+
+            .titles-section-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .titles-course-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+
+            .titles-card-image-wrapper {
+                height: 220px;
+            }
+
+            .titles-card-title {
+                font-size: 0.95rem;
+            }
+
+            .titles-view-all {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="titles-purchase-section">
+        <div class="titles-container">
+            <div class="titles-header">
+                <h2 class="titles-section-title">Títulos Disponibles</h2>
+            </div>
+
+            <div class="titles-carousel-wrapper">
+                <!-- Previous Button -->
+                <div class="titles-carousel-nav prev">
+                    <button class="titles-nav-button prev-btn" id="titlesPrevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="titles-carousel-container">
+                    <div class="titles-carousel-track" id="titlesCarouselTrack">
+                        <!-- Card 1 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop" alt="21 Day Sculpt Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">21 Day Sculpt & Strengthen Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">21 videos</span>
+                                    <span class="titles-price">$84.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop" alt="15 Day Sweat Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">15 Day Sweat & Sculpt Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">15 videos</span>
+                                    <span class="titles-price">$64.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop" alt="30 Day Sculpt Challenge" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">30 Day Sculpt, Sweat & Strengthen Challenge</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">30 videos</span>
+                                    <span class="titles-price">$74.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&h=400&fit=crop" alt="Strong Starter Pack" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Strong Starter Pack</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">8 videos</span>
+                                    <span class="titles-price">$44.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=400&fit=crop" alt="Core Power Program" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Core Power Intensive Program</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">12 videos</span>
+                                    <span class="titles-price">$54.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=600&h=400&fit=crop" alt="Flexibility Master" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Flexibility Master Series</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">10 videos</span>
+                                    <span class="titles-price">$49.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop" alt="Balance Bundle" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Balance & Control Bundle</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">16 videos</span>
+                                    <span class="titles-price">$69.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="titles-course-card">
+                            <div class="titles-card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=400&fit=crop" alt="Ultimate Collection" class="titles-card-image">
+                            </div>
+                            <div class="titles-card-content">
+                                <h3 class="titles-card-title">Ultimate Pilates Collection</h3>
+                                <div class="titles-card-meta">
+                                    <span class="titles-video-count">50 videos</span>
+                                    <span class="titles-price">$149.99</span>
+                                </div>
+                                <button class="titles-buy-button">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="titles-carousel-nav next">
+                    <button class="titles-nav-button next-btn" id="titlesNextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="titles-carousel-dots" id="titlesCarouselDots"></div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Functionality for Titles/Courses
+        class TitlesCarousel {
+            constructor() {
+                this.track = document.getElementById('titlesCarouselTrack');
+                this.prevBtn = document.getElementById('titlesPrevBtn');
+                this.nextBtn = document.getElementById('titlesNextBtn');
+                this.dotsContainer = document.getElementById('titlesCarouselDots');
+                
+                this.cards = document.querySelectorAll('.titles-course-card');
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                this.init();
+            }
+
+            getCardsPerView() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                if (width <= 1200) return 3;
+                return 4;
+            }
+
+            init() {
+                this.createDots();
+                this.updateButtons();
+                this.attachEvents();
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('titles-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events for mobile
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diff = startX - currentX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+
+            goToPage(index) {
+                if (index < 0 || index >= this.totalPages) return;
+                
+                this.currentIndex = index;
+                const cardWidth = this.cards[0].offsetWidth;
+                const gap = 20;
+                const offset = -(this.currentIndex * this.cardsPerView * (cardWidth + gap));
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateButtons();
+                this.updateDots();
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.goToPage(this.currentIndex - 1);
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.goToPage(this.currentIndex + 1);
+                }
+            }
+
+            updateButtons() {
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex === this.totalPages - 1);
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.titles-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            handleResize() {
+                const newCardsPerView = this.getCardsPerView();
+                if (newCardsPerView !== this.cardsPerView) {
+                    this.cardsPerView = newCardsPerView;
+                    this.totalPages = Math.ceil(this.cards.length / this.cardsPerView);
+                    this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                    this.createDots();
+                    this.goToPage(this.currentIndex);
+                }
+            }
+        }
+
+        // Initialize titles carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TitlesCarousel();
+        });
+    </script>
+</body>
+</html>
