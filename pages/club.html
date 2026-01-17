@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELES Pilates - Club</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         
         :root {
@@ -281,9 +281,17 @@
         }
 
         @keyframes cartBadgePulse {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Botón de suscripción */
@@ -606,15 +614,15 @@
             .header-container {
                 padding: 0 var(--spacing-md);
             }
-            
+
             .nav-list {
                 gap: var(--spacing-md);
             }
-            
+
             .nav-link {
                 font-size: 16px;
             }
-            
+
             .logo img {
                 height: 60px;
             }
@@ -717,15 +725,15 @@
             :root {
                 --header-height: 80px;
             }
-            
+
             body {
                 padding-top: 115px;
             }
-            
+
             .header-container {
                 padding: 0 var(--spacing-md);
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
@@ -733,7 +741,7 @@
             .subscribe-btn {
                 display: none;
             }
-            
+
             .main-nav {
                 position: fixed;
                 top: 115px;
@@ -750,19 +758,19 @@
                 max-height: calc(100vh - 115px);
                 overflow-y: auto;
             }
-            
+
             .main-nav.active {
                 transform: translateX(0);
                 opacity: 1;
                 visibility: visible;
             }
-            
+
             .nav-list {
                 flex-direction: column;
                 gap: var(--spacing-sm);
                 align-items: stretch;
             }
-            
+
             .nav-link {
                 padding: 15px 20px;
                 text-align: left;
@@ -771,11 +779,11 @@
                 border-radius: 12px;
                 border-left: 3px solid transparent;
             }
-            
+
             .nav-link::before {
                 display: none;
             }
-            
+
             .nav-link:hover {
                 color: var(--white);
                 background: rgba(255, 255, 255, 0.15);
@@ -810,11 +818,11 @@
                 color: var(--burgundy-red) !important;
                 transform: translateY(0) !important;
             }
-            
+
             .logo img {
                 height: 55px;
             }
-            
+
             .cart-btn,
             .login-btn {
                 width: 46px;
@@ -864,13 +872,13 @@
             .logo img {
                 height: 48px;
             }
-            
+
             .cart-btn,
             .login-btn {
                 width: 44px;
                 height: 44px;
             }
-            
+
             .cart-btn i,
             .login-btn i {
                 font-size: 17px;
@@ -1798,22 +1806,23 @@
             <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp" alt="ELES Pilates" />
+                    <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp"
+                        alt="ELES Pilates" />
                 </a>
             </div>
 
             <!-- Navegación Principal -->
             <nav class="main-nav" id="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="club.html" class="nav-link">The Club</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="club.html" class="nav-link active">The Club</a></li>
                     <li><a href="method.html" class="nav-link">The Method</a></li>
                     <li><a href="workouts.html" class="nav-link">Workouts</a></li>
                     <li><a href="faq.html" class="nav-link">FAQ</a></li>
                     <li><a href="shop.html" class="nav-link">Shop</a></li>
                     <!-- Botón de suscripción solo visible en tablet/móvil dentro del menú -->
                     <li class="mobile-subscribe-item">
-                        <a href="#signup" class="nav-link subscribe-link">
+                        <a href="index.html#signup" class="nav-link subscribe-link">
                             <i class="fas fa-star"></i> Suscríbete
                         </a>
                     </li>
@@ -1830,7 +1839,7 @@
 
                 <!-- Login -->
                 <button class="login-btn" aria-label="Iniciar sesión" id="login-btn"
-                        onclick="window.location.href='#profile'">
+                    onclick="window.location.href='#profile'">
                     <i class="fas fa-user"></i>
                 </button>
 
@@ -1853,7 +1862,7 @@
         // ============================================
         // SISTEMA DE GESTIÓN DEL CARRITO
         // ============================================
-        
+
         class ShoppingCart {
             constructor() {
                 this.items = this.loadCart();
@@ -1863,7 +1872,7 @@
             init() {
                 this.updateUI();
                 this.setupEventListeners();
-                
+
                 // Escuchar cambios en localStorage desde otras pestañas
                 window.addEventListener('storage', (e) => {
                     if (e.key === 'elesCart') {
@@ -1901,7 +1910,7 @@
 
             addItem(product) {
                 const existingItem = this.items.find(item => item.id === product.id);
-                
+
                 if (existingItem) {
                     existingItem.quantity += product.quantity || 1;
                 } else {
@@ -1913,7 +1922,7 @@
                         quantity: product.quantity || 1
                     });
                 }
-                
+
                 this.saveCart();
                 this.updateUI();
                 this.showNotification('Producto añadido al carrito');
@@ -1963,7 +1972,7 @@
             updateBadge() {
                 const badge = document.getElementById('cart-badge');
                 const totalItems = this.getTotalItems();
-                
+
                 if (badge) {
                     badge.textContent = totalItems;
                     if (totalItems > 0) {
@@ -2052,7 +2061,7 @@
             openCart() {
                 const sidebar = document.getElementById('cart-sidebar');
                 const overlay = document.getElementById('cart-overlay');
-                
+
                 if (sidebar && overlay) {
                     sidebar.classList.add('active');
                     overlay.classList.add('active');
@@ -2063,7 +2072,7 @@
             closeCart() {
                 const sidebar = document.getElementById('cart-sidebar');
                 const overlay = document.getElementById('cart-overlay');
-                
+
                 if (sidebar && overlay) {
                     sidebar.classList.remove('active');
                     overlay.classList.remove('active');
@@ -2089,7 +2098,7 @@
         // ============================================
         // MENÚ MÓVIL Y NAVEGACIÓN
         // ============================================
-        
+
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
         const header = document.getElementById('main-header');
@@ -2099,7 +2108,7 @@
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
-            
+
             if (mainNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -2115,7 +2124,7 @@
                     mainNav.classList.remove('active');
                     document.body.style.overflow = '';
                 }
-                
+
                 if (!link.classList.contains('subscribe-link')) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
@@ -2147,15 +2156,15 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
+
                 if (targetSection) {
                     const headerOffset = 130;
                     const elementPosition = targetSection.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
+
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: 'smooth'

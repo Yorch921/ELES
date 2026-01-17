@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELES Pilates - Shop</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ELES - Pilates Premium</title>
+
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        
         :root {
             --burgundy-red: #70000e;
             --white: #ffffff;
@@ -281,9 +289,17 @@
         }
 
         @keyframes cartBadgePulse {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Botón de suscripción */
@@ -606,15 +622,15 @@
             .header-container {
                 padding: 0 var(--spacing-md);
             }
-            
+
             .nav-list {
                 gap: var(--spacing-md);
             }
-            
+
             .nav-link {
                 font-size: 16px;
             }
-            
+
             .logo img {
                 height: 60px;
             }
@@ -717,15 +733,15 @@
             :root {
                 --header-height: 80px;
             }
-            
+
             body {
                 padding-top: 115px;
             }
-            
+
             .header-container {
                 padding: 0 var(--spacing-md);
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
@@ -733,7 +749,7 @@
             .subscribe-btn {
                 display: none;
             }
-            
+
             .main-nav {
                 position: fixed;
                 top: 115px;
@@ -750,19 +766,19 @@
                 max-height: calc(100vh - 115px);
                 overflow-y: auto;
             }
-            
+
             .main-nav.active {
                 transform: translateX(0);
                 opacity: 1;
                 visibility: visible;
             }
-            
+
             .nav-list {
                 flex-direction: column;
                 gap: var(--spacing-sm);
                 align-items: stretch;
             }
-            
+
             .nav-link {
                 padding: 15px 20px;
                 text-align: left;
@@ -771,11 +787,11 @@
                 border-radius: 12px;
                 border-left: 3px solid transparent;
             }
-            
+
             .nav-link::before {
                 display: none;
             }
-            
+
             .nav-link:hover {
                 color: var(--white);
                 background: rgba(255, 255, 255, 0.15);
@@ -810,11 +826,11 @@
                 color: var(--burgundy-red) !important;
                 transform: translateY(0) !important;
             }
-            
+
             .logo img {
                 height: 55px;
             }
-            
+
             .cart-btn,
             .login-btn {
                 width: 46px;
@@ -864,13 +880,13 @@
             .logo img {
                 height: 48px;
             }
-            
+
             .cart-btn,
             .login-btn {
                 width: 44px;
                 height: 44px;
             }
-            
+
             .cart-btn i,
             .login-btn i {
                 font-size: 17px;
@@ -888,365 +904,10 @@
         html {
             scroll-behavior: smooth;
         }
-    
-
-        :root {
-            --burgundy-red: #70000e;
-            --white: #ffffff;
-            --white-soft: rgba(255, 255, 255, 0.9);
-            --white-hover: rgba(255, 255, 255, 0.15);
-            --spacing-xs: 8px;
-            --spacing-sm: 12px;
-            --spacing-md: 20px;
-            --spacing-lg: 32px;
-            --transition-smooth: all 0.3s ease;
-            --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            background: transparent;
-            color: var(--white);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .footer {
-            background: var(--burgundy-red);
-            margin-top: auto;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: var(--spacing-md) var(--spacing-lg);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: var(--spacing-md);
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-logo a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-logo img {
-            height: 65px;
-            width: auto;
-            display: block;
-            transition: var(--transition-smooth);
-            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        .footer-logo a:hover img {
-            transform: scale(1.08);
-            filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .footer-links nav {
-            display: flex;
-            gap: var(--spacing-sm);
-            align-items: center;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            padding: 10px 18px;
-            transition: all 0.4s ease;
-            position: relative;
-            border-radius: 6px;
-        }
-
-        .footer-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--white);
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
-        }
-
-        .footer-links a:hover {
-            background: var(--white-hover);
-            transform: translateY(-2px);
-            letter-spacing: 0.5px;
-        }
-
-        .footer-links a:hover::after {
-            width: 75%;
-        }
-
-        .footer-links .separator {
-            width: 1px;
-            height: 18px;
-            background: rgba(255, 255, 255, 0.3);
-            margin: 0 4px;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: flex-end;
-            gap: 14px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: transparent;
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            border: 2px solid var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-social a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            transform: scale(0);
-            transition: transform 0.4s ease;
-            z-index: 0;
-            border-radius: 50%;
-        }
-
-        .footer-social a i {
-            font-size: 19px;
-            position: relative;
-            z-index: 1;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-social a:hover::before {
-            transform: scale(1);
-        }
-
-        .footer-social a:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .footer-social a:hover i {
-            color: var(--burgundy-red);
-            transform: rotate(360deg);
-        }
-
-        .footer-bottom {
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            font-size: 13px;
-            color: var(--white-soft);
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-
-        .footer-credits {
-            font-size: 12px;
-            color: var(--white-soft);
-            font-weight: 300;
-        }
-
-        .footer-credits a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-smooth);
-            position: relative;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-
-        .footer-credits a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-
-        .footer-credits a:hover {
-            background: var(--white-hover);
-            letter-spacing: 0.5px;
-        }
-
-        .footer-credits a:hover::after {
-            width: 100%;
-        }
-
-        @media (max-width: 1024px) {
-            .footer-content {
-                gap: var(--spacing-md);
-            }
-
-            .footer-links a {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                padding: var(--spacing-md);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .footer-logo {
-                justify-content: center;
-            }
-
-            .footer-logo img {
-                height: 55px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-links nav {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-            }
-
-            .footer-links a {
-                display: block;
-                padding: 14px 20px;
-                background: rgba(255, 255, 255, 0.08);
-                border-radius: 10px;
-                border-left: 3px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .footer-links a:hover {
-                background: rgba(255, 255, 255, 0.2);
-                border-left-color: var(--white);
-                transform: translateX(5px);
-            }
-
-            .footer-links a::after {
-                display: none;
-            }
-
-            .footer-links .separator {
-                display: none;
-            }
-
-            .footer-social {
-                justify-content: center;
-                gap: 16px;
-            }
-
-            .footer-social a {
-                width: 44px;
-                height: 44px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-logo img {
-                height: 50px;
-            }
-
-            .footer-links a {
-                font-size: 15px;
-                padding: 12px 18px;
-            }
-
-            .footer-social a {
-                width: 40px;
-                height: 40px;
-            }
-
-            .footer-social a i {
-                font-size: 17px;
-            }
-
-            .footer-bottom p {
-                font-size: 12px;
-            }
-
-            .footer-credits {
-                font-size: 11px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .footer {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    
     </style>
 </head>
+
 <body>
-    
     <!-- Overlay del carrito -->
     <div class="cart-sidebar-overlay" id="cart-overlay"></div>
 
@@ -1300,8 +961,9 @@
         <div class="header-container">
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html">
-                    <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp" alt="ELES Pilates" />
+                <a href="https://eles.dominacode.com/inicio">
+                    <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp"
+                        alt="ELES Pilates" />
                 </a>
             </div>
 
@@ -1316,7 +978,7 @@
                     <li><a href="shop.html" class="nav-link">Shop</a></li>
                     <!-- Botón de suscripción solo visible en tablet/móvil dentro del menú -->
                     <li class="mobile-subscribe-item">
-                        <a href="#signup" class="nav-link subscribe-link">
+                        <a href="index.html#signup" class="nav-link subscribe-link">
                             <i class="fas fa-star"></i> Suscríbete
                         </a>
                     </li>
@@ -1333,12 +995,12 @@
 
                 <!-- Login -->
                 <button class="login-btn" aria-label="Iniciar sesión" id="login-btn"
-                        onclick="window.location.href='#profile'">
+                    onclick="window.location.href='https://eles.dominacode.com/perfil'">
                     <i class="fas fa-user"></i>
                 </button>
 
                 <!-- Botón de Suscripción (solo desktop) -->
-                <a href="#signup" class="subscribe-btn">
+                <a href="https://eles.dominacode.com/sign-up" class="subscribe-btn">
                     <span>Subscribe</span>
                 </a>
 
@@ -1356,7 +1018,7 @@
         // ============================================
         // SISTEMA DE GESTIÓN DEL CARRITO
         // ============================================
-        
+
         class ShoppingCart {
             constructor() {
                 this.items = this.loadCart();
@@ -1366,7 +1028,7 @@
             init() {
                 this.updateUI();
                 this.setupEventListeners();
-                
+
                 // Escuchar cambios en localStorage desde otras pestañas
                 window.addEventListener('storage', (e) => {
                     if (e.key === 'elesCart') {
@@ -1404,7 +1066,7 @@
 
             addItem(product) {
                 const existingItem = this.items.find(item => item.id === product.id);
-                
+
                 if (existingItem) {
                     existingItem.quantity += product.quantity || 1;
                 } else {
@@ -1416,7 +1078,7 @@
                         quantity: product.quantity || 1
                     });
                 }
-                
+
                 this.saveCart();
                 this.updateUI();
                 this.showNotification('Producto añadido al carrito');
@@ -1466,7 +1128,7 @@
             updateBadge() {
                 const badge = document.getElementById('cart-badge');
                 const totalItems = this.getTotalItems();
-                
+
                 if (badge) {
                     badge.textContent = totalItems;
                     if (totalItems > 0) {
@@ -1547,7 +1209,7 @@
 
                 if (checkoutBtn) {
                     checkoutBtn.addEventListener('click', () => {
-                        window.location.href = '#cart';
+                        window.location.href = 'https://eles.dominacode.com/tienda/carrito';
                     });
                 }
             }
@@ -1555,7 +1217,7 @@
             openCart() {
                 const sidebar = document.getElementById('cart-sidebar');
                 const overlay = document.getElementById('cart-overlay');
-                
+
                 if (sidebar && overlay) {
                     sidebar.classList.add('active');
                     overlay.classList.add('active');
@@ -1566,7 +1228,7 @@
             closeCart() {
                 const sidebar = document.getElementById('cart-sidebar');
                 const overlay = document.getElementById('cart-overlay');
-                
+
                 if (sidebar && overlay) {
                     sidebar.classList.remove('active');
                     overlay.classList.remove('active');
@@ -1592,7 +1254,7 @@
         // ============================================
         // MENÚ MÓVIL Y NAVEGACIÓN
         // ============================================
-        
+
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
         const header = document.getElementById('main-header');
@@ -1602,7 +1264,7 @@
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
-            
+
             if (mainNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -1618,7 +1280,7 @@
                     mainNav.classList.remove('active');
                     document.body.style.overflow = '';
                 }
-                
+
                 if (!link.classList.contains('subscribe-link')) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
@@ -1650,15 +1312,15 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
+
                 if (targetSection) {
                     const headerOffset = 130;
                     const elementPosition = targetSection.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
+
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: 'smooth'
@@ -1670,90 +1332,6 @@
         console.log('✨ ELES Header con Sistema de Carrito cargado correctamente');
         console.log('📦 API del Carrito disponible en: window.ELESCart');
     </script>
-<div style="min-height: 50vh; display:flex; align-items:center; justify-content:center;"><h2>Contenido Próximamente</h2></div>
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#inicio">
-                        <img src="https://eles.dominacode.com/wp-content/uploads/2025/12/logo-ELES.webp" alt="ELES Pilates" />
-                    </a>
-                </div>
-
-                <div class="footer-links">
-                    <nav>
-                        <a href="#privacy">Privacy</a>
-                        <span class="separator"></span>
-                        <a href="#cookies">Cookies</a>
-                    </nav>
-                </div>
-
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/laura.eles/" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@lauraeles" target="_blank" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@laura.eles" target="_blank" aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Eles Club. Todos los derechos reservados.</p>
-                <p class="footer-credits">Diseñado por<a href="https://www.dominacode.com" target="_blank" rel="noopener noreferrer">Dominacode</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const footerElements = document.querySelectorAll('.footer-logo, .footer-links, .footer-social, .footer-bottom');
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = '0';
-                            entry.target.style.transform = 'translateY(20px)';
-                            entry.target.style.transition = 'all 0.5s ease-out';
-                            requestAnimationFrame(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                            });
-                        }, index * 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            footerElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-
-        console.log('✨ ELES Footer Premium cargado correctamente');
-    </script>
-
 </body>
+
 </html>

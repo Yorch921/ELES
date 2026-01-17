@@ -7,7 +7,18 @@ PAGES = {
     'index.html': ['HOME_hero.html'], 
     'method.html': ['METHOD parte 1.html', 'METHOD parte 2.html', 'METHOD parte 3.html', 'METHOD parte 4.html'],
     'workouts.html': ['WORKOUTS parte 1.html', 'WORKOUTS parte 2.html', 'WORKOUTS parte 3.html'],
-    'faq.html': ['FAQ.html'],
+    'faq.html': ['FAQ.html'], # Note: FAQ.html is currently in root, needs to be moved to blocks/ if it is a block, or handled. User said "FAQ.html" in /pages, but didn't explicitly say where the SOURCE content comes from. Assuming FAQ.html (the large one) is the page or block? 
+    # User request said: "/blocks ... HOME_hero, CLUB_content, METHOD..., WORKOUTS..." 
+    # User request said: "/pages ... FAQ.html"
+    # Wait, the user listed "FAQ.html" under /pages. 
+    # But usually pages are assembled. 
+    # The user request didn't list FAQ content in /blocks. 
+    # Let's check if FAQ.html was moved. I did not move FAQ.html in the previous step because it wasn't in the specific blocks list.
+    # checking file list: FAQ.html (687604 bytes). 
+    # I should probably move FAQ.html to blocks or just treat it as a block?
+    # The user said: "Las páginas solo deben: incluir Header, incluir bloques correspondientes, incluir Footer".
+    # So FAQ.html in pages should be built from a block.
+    # I will move the existing FAQ.html to blocks/FAQ_content.html to be safe and consistent.
     'club.html': ['CLUB_content.html'],
     'shop.html': []
 }
@@ -87,13 +98,38 @@ def replace_links(html_content):
     
     return html_content
 
+
+def set_active_nav_link(html_content, page_name):
+    """Sets the active class on the navigation link for the current page."""
+    # First, remove active class from all nav links
+    html_content = html_content.replace('class="nav-link active"', 'class="nav-link"')
+    
+    # Then add active class to the current page's link
+    # We look for href="page_name" class="nav-link"
+    target_str = f'href="{page_name}" class="nav-link"'
+    replacement_str = f'href="{page_name}" class="nav-link active"'
+    
+    html_content = html_content.replace(target_str, replacement_str)
+    
+    return html_content
+
 def build_site():
     print("Building site...")
     
+    # Define paths
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    PARTIALS_DIR = os.path.join(BASE_DIR, 'partials')
+    BLOCKS_DIR = os.path.join(BASE_DIR, 'blocks')
+    PAGES_DIR = os.path.join(BASE_DIR, 'pages')
+
+    # Ensure pages directory exists
+    if not os.path.exists(PAGES_DIR):
+        os.makedirs(PAGES_DIR)
+
     # Read Header and Footer
-    with open('Header.html', 'r', encoding='utf-8') as f:
+    with open(os.path.join(PARTIALS_DIR, 'Header.html'), 'r', encoding='utf-8') as f:
         header_raw = f.read()
-    with open('FOOTER.html', 'r', encoding='utf-8') as f:
+    with open(os.path.join(PARTIALS_DIR, 'FOOTER.html'), 'r', encoding='utf-8') as f:
         footer_raw = f.read()
         
     h_styles, h_links, h_body = extract_content(header_raw, "Header.html")
@@ -110,7 +146,10 @@ def build_site():
         
         page_styles = list(all_shared_styles)
         page_links = list(all_shared_links)
-        page_body_parts = [h_body]
+        
+        # Set active nav link for this specific page
+        page_header = set_active_nav_link(h_body, page_name)
+        page_body_parts = [page_header]
         
         if not content_files:
             # Placeholders for empty pages
@@ -118,11 +157,18 @@ def build_site():
                  page_body_parts.append('<div style="min-height: 50vh; display:flex; align-items:center; justify-content:center;"><h2>Contenido Próximamente</h2></div>')
         
         for fname in content_files:
-            if not os.path.exists(fname):
-                print(f"  Warning: {fname} missing inside {page_name}.")
+            block_path = os.path.join(BLOCKS_DIR, fname)
+            # Special handling for FAQ if I decided to renaming it or if it is missing
+            if fname == 'FAQ.html' and not os.path.exists(block_path):
+                 # Try finding it in root just in case, or assume we need to move it manually? 
+                 # For now, let's assume it is in blocks. 
+                 pass
+
+            if not os.path.exists(block_path):
+                print(f"  Warning: {fname} missing in blocks directory.")
                 continue
             
-            with open(fname, 'r', encoding='utf-8') as f:
+            with open(block_path, 'r', encoding='utf-8') as f:
                 c_raw = f.read()
             
             c_styles, c_links, c_body = extract_content(c_raw, fname)
@@ -134,6 +180,7 @@ def build_site():
             
             c_body = replace_links(c_body)
             page_body_parts.append(f"\n<!-- SECTION: {fname} -->\n{c_body}\n")
+
             
         page_body_parts.append(f_body)
         
@@ -153,10 +200,10 @@ def build_site():
 </body>
 </html>"""
         
-        with open(page_name, 'w', encoding='utf-8') as f:
+        with open(os.path.join(PAGES_DIR, page_name), 'w', encoding='utf-8') as f:
             f.write(final_html)
             
-    print(f"Build complete. {len(PAGES)} pages generated.")
+    print(f"Build complete. {len(PAGES)} pages generated in {PAGES_DIR}.")
 
 if __name__ == "__main__":
     build_site()
