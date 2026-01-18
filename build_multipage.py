@@ -3,24 +3,15 @@ import os
 import re
 
 # Configuration
+
 PAGES = {
     'index.html': ['HOME_hero.html'], 
     'method.html': ['METHOD parte 1.html', 'METHOD parte 2.html', 'METHOD parte 3.html', 'METHOD parte 4.html'],
     'workouts.html': ['WORKOUTS parte 1.html', 'WORKOUTS parte 2.html', 'WORKOUTS parte 3.html'],
-    'faq.html': ['FAQ.html'], # Note: FAQ.html is currently in root, needs to be moved to blocks/ if it is a block, or handled. User said "FAQ.html" in /pages, but didn't explicitly say where the SOURCE content comes from. Assuming FAQ.html (the large one) is the page or block? 
-    # User request said: "/blocks ... HOME_hero, CLUB_content, METHOD..., WORKOUTS..." 
-    # User request said: "/pages ... FAQ.html"
-    # Wait, the user listed "FAQ.html" under /pages. 
-    # But usually pages are assembled. 
-    # The user request didn't list FAQ content in /blocks. 
-    # Let's check if FAQ.html was moved. I did not move FAQ.html in the previous step because it wasn't in the specific blocks list.
-    # checking file list: FAQ.html (687604 bytes). 
-    # I should probably move FAQ.html to blocks or just treat it as a block?
-    # The user said: "Las páginas solo deben: incluir Header, incluir bloques correspondientes, incluir Footer".
-    # So FAQ.html in pages should be built from a block.
-    # I will move the existing FAQ.html to blocks/FAQ_content.html to be safe and consistent.
+    'faq.html': ['FAQ.html'], 
     'club.html': ['CLUB_content.html'],
-    'shop.html': []
+    'shop.html': [],
+    'auth.html': ['AUTH_content.html']
 }
 
 LINK_MAP = {
@@ -47,11 +38,12 @@ LINK_MAP = {
     
     # Anchors
     r'https?://eles\.dominacode\.com/sign-up': '#signup',
-    r'https?://eles\.dominacode\.com/perfil': '#profile',
+    r'https?://eles\.dominacode\.com/perfil': 'auth.html',
     r'https?://eles\.dominacode\.com/tienda/carrito': '#cart',
     r'https?://eles\.dominacode\.com/politica-privacidad-2': '#privacy',
     r'https?://eles\.dominacode\.com/politica-cookies': '#cookies',
 }
+
 
 def extract_content(content, fname="unknown"):
     """Extracts styles, links, and body content from HTML string."""
