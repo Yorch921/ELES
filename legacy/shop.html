@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;family=Inter:wght@200;300;400&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary-burgundy: #631D2A;
+            --charcoal-bg: #121212;
+            --card-bg: #1A1A1A;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--charcoal-bg);
+            color: #FFFFFF;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-[var(--charcoal-bg)]/95 backdrop-blur-sm px-4 py-6 flex items-center justify-between">
+<button class="w-10 flex justify-start">
+<span class="material-symbols-outlined text-xl opacity-70">arrow_back_ios</span>
+</button>
+<h1 class="serif-font text-xl tracking-[0.2em] font-light uppercase">ELES CLUB</h1>
+<div class="w-10 flex justify-end relative">
+<span class="material-symbols-outlined text-2xl opacity-70">shopping_bag</span>
+<span class="absolute -top-1 -right-0.5 bg-[var(--primary-burgundy)] text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">2</span>
+</div>
+</header>
+<main class="flex-1 px-4 pb-24">
+<div class="flex justify-between items-baseline mb-8 mt-2">
+<div>
+<h2 class="serif-font text-2xl font-light italic">Shop</h2>
+</div>
+<button class="flex items-center gap-1.5 group">
+<span class="text-[10px] uppercase tracking-[0.2em] text-gray-400 group-hover:text-white transition-colors">Filtros</span>
+<span class="material-symbols-outlined text-sm text-gray-400">tune</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-10">
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[4/5] overflow-hidden bg-[var(--card-bg)] relative">
+<img alt="Yoga Mat" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOg6w2D92FNVxIaQvrXgJtNvBeGGimOReA8lrMoULS6ikcWXId8EFZfd81xlBc6W-Si_NV18DKQ37agwo5vdtcu3GKxyLFWfo_tQCFdIu5ErHSN2falYh9hcCxo5gluxCPwnMaBRhNuWYS-Y32yAoJHWbHcdMYOxs_UCKRm3VsjjMb-e0ky5BgumpCY_a7Xs43pImb1MHxWatiYe6QfVKfWpeCsNPsbKMSnejy6H-_JgUXHnw9lQ4rZ_jqoR7uIjje_3GeigdCAMg"/>
+<button class="absolute bottom-3 right-3 w-8 h-8 rounded-full border border-white/10 bg-black/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center">
+<h3 class="serif-font text-base tracking-wide uppercase font-light">YOGA MAT</h3>
+<p class="text-[11px] text-gray-400 mt-0.5 sans-serif">75.00€</p>
+<a class="mt-2 text-[9px] uppercase tracking-[0.15em] text-gray-500 border-b border-gray-800 pb-0.5" href="#">Ver detalle</a>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[4/5] overflow-hidden bg-[var(--card-bg)] relative">
+<img alt="Bandas Resistencia" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa7WTiBkoaP04r0rKcR_9eaGjbGbxSy3JLgWCz4jBcTdUXMBcBltUTZjozweZn-JXx9bgRj_w1Nf-6XwwyzoYjCUUC_V72YYFYIRb38jhpCyQ4mz-BMZBDLj3zgIl8eDj00snNvg9AQ82H-tPWTFZr4TaaoC5qgz0kv6O_NDq1NrPRb7obKjCjyhdGcJqEzyPxr-E1FEaRYwr2QpZYe7334X6e550Fh3RvqeASzn19S_svB418I5ZfOP5hThM_2vI-cOaS5TYRvVE"/>
+<button class="absolute bottom-3 right-3 w-8 h-8 rounded-full border border-white/10 bg-black/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center">
+<h3 class="serif-font text-base tracking-wide uppercase font-light">BANDAS RESISTENCIA</h3>
+<p class="text-[11px] text-gray-400 mt-0.5 sans-serif">28.00€</p>
+<a class="mt-2 text-[9px] uppercase tracking-[0.15em] text-gray-500 border-b border-gray-800 pb-0.5" href="#">Ver detalle</a>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[4/5] overflow-hidden bg-[var(--card-bg)] relative">
+<img alt="Soft Ball" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9SpOxKae_OLrc1nizwSg5NefXe-zJXCmRjaEhGCwHmf9sMFRNnE-LU7CW981eElfUyUClPhBvsjAa1Tfo4Xf0Wz6l7oLXmYCC5n_-wZdIqRhhK25yc_WZ9giIMCYPN8g6G5bftSrFTCDhst1d_QW8UwvShT84qaw0yNtbIGVwwXNVF_NHf8pCZ4qiMlHKKk9i1Ox3cmtd2aWWLRpGPiXDd6gVQwqOqChZpKPRDJLhkfO_mvmTdSiYK8LT-rWebQVaDTS2yksec0k"/>
+<button class="absolute bottom-3 right-3 w-8 h-8 rounded-full border border-white/10 bg-black/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center">
+<h3 class="serif-font text-base tracking-wide uppercase font-light">SOFT BALL</h3>
+<p class="text-[11px] text-gray-400 mt-0.5 sans-serif">18.00€</p>
+<a class="mt-2 text-[9px] uppercase tracking-[0.15em] text-gray-500 border-b border-gray-800 pb-0.5" href="#">Ver detalle</a>
+</div>
+</div>
+<div class="flex flex-col gap-3 opacity-30">
+<div class="aspect-[4/5] overflow-hidden border border-dashed border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl font-thin">more_horiz</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<h3 class="serif-font text-base tracking-wide uppercase font-light">Coming Soon</h3>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-[var(--charcoal-bg)]/95 backdrop-blur-xl border-t border-white/5 px-10 py-5 flex justify-between items-center z-50">
+<button class="text-gray-600 hover:text-white transition-colors">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="text-gray-600 hover:text-white transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-[var(--primary-burgundy)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</button>
+<button class="text-gray-600 hover:text-white transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+
+</body></html>

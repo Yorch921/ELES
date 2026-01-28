@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude --debug)",
+      "Bash(if [ -f package.json ])",
+      "Bash(then cat package.json)",
+      "Bash(fi)",
+      "Bash(find:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(taskkill /F /FI \"WINDOWTITLE eq npm*\")",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /F /PID 130104 /PID 125504)",
+      "Bash(ping:*)",
+      "Bash(npm run dev:*)",
+      "Bash(taskkill:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

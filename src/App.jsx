@@ -9,6 +9,10 @@ import Method from './pages/Method';
 import Workouts from './pages/Workouts';
 import FAQ from './pages/FAQ';
 import Videos from './pages/Videos';
+import Club from './pages/Club';
+import Shop from './pages/Shop';
+import Privacy from './pages/Privacy';
+import Cookies from './pages/Cookies';
 import './App.css';
 
 function AppContent() {
@@ -30,6 +34,10 @@ function AppContent() {
           <Route path="/login" element={<Login />} />
           <Route path="/planes" element={<Plans />} />
           <Route path="/videos" element={<Videos />} />
+          <Route path="/club" element={<Club />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/cookies" element={<Cookies />} />
         </Routes>
       </main>
       <Footer />

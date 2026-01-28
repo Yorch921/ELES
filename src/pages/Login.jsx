@@ -1,84 +1,107 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import './Login.css';
+import { useState } from "react";
+import "./Login.css";
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isRegister, setIsRegister] = useState(false);
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      alert('Por favor completa todos los campos');
-      return;
-    }
-
-    login(email, password);
-    navigate('/planes');
-  };
+export default function Login() {
+  const [tab, setTab] = useState("login");
+  const [plan, setPlan] = useState("Pro");
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-card">
-          <h2>{isRegister ? 'Crear Cuenta' : 'Iniciar Sesión'}</h2>
-          <p className="login-subtitle">
-            {isRegister
-              ? 'Regístrate para acceder a nuestros planes'
-              : 'Bienvenido de vuelta'}
-          </p>
+    <main className="auth-page">
+      <div className="auth-container">
+        <div className="auth-box">
 
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="tu@email.com"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Contraseña</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                required
-              />
-            </div>
-
-            <button type="submit" className="btn btn-submit">
-              {isRegister ? 'Registrarse' : 'Iniciar Sesión'}
-            </button>
-          </form>
-
-          <div className="login-footer">
+          {/* TABS */}
+          <div className="auth-tabs">
             <button
-              onClick={() => setIsRegister(!isRegister)}
-              className="toggle-mode"
+              className={`auth-tab ${tab === "login" ? "active" : ""}`}
+              onClick={() => setTab("login")}
             >
-              {isRegister
-                ? '¿Ya tienes cuenta? Inicia sesión'
-                : '¿No tienes cuenta? Regístrate'}
+              Iniciar Sesión
+            </button>
+
+            <button
+              className={`auth-tab ${tab === "signup" ? "active" : ""}`}
+              onClick={() => setTab("signup")}
+            >
+              Crear Cuenta
             </button>
           </div>
 
-          <div className="demo-note">
-            <p><strong>Modo Demo:</strong> Usa cualquier email y contraseña para probar</p>
-          </div>
+          {/* LOGIN */}
+          {tab === "login" && (
+            <form className="auth-form">
+              <div className="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="tu@email.com" required />
+              </div>
+
+              <div className="form-group">
+                <label>Contraseña</label>
+                <input type="password" placeholder="••••••••" required />
+              </div>
+
+              <button className="auth-btn">Iniciar Sesión</button>
+
+              <p className="auth-link">
+                ¿No tienes cuenta?{" "}
+                <span onClick={() => setTab("signup")}>Crear cuenta</span>
+              </p>
+            </form>
+          )}
+
+          {/* SIGN UP */}
+          {tab === "signup" && (
+            <form className="auth-form">
+
+              {/* PLAN SELECTOR */}
+              <div className="form-group">
+                <label>Selecciona tu plan</label>
+                <div className="plan-selector">
+                  {["Básico", "Pro", "Premium"].map(p => (
+                    <div
+                      key={p}
+                      className={`plan-option ${plan === p ? "selected" : ""}`}
+                      onClick={() => setPlan(p)}
+                    >
+                      <h4>{p}</h4>
+                      <span>
+                        {p === "Básico" && "29€/mes"}
+                        {p === "Pro" && "49€/mes"}
+                        {p === "Premium" && "89€/mes"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Nombre</label>
+                <input type="text" required />
+              </div>
+
+              <div className="form-group">
+                <label>Email</label>
+                <input type="email" required />
+              </div>
+
+              <div className="form-group">
+                <label>Contraseña</label>
+                <input type="password" required />
+              </div>
+
+              <button className="auth-btn">
+                Crear cuenta y continuar
+              </button>
+
+              <p className="auth-link">
+                ¿Ya tienes cuenta?{" "}
+                <span onClick={() => setTab("login")}>Iniciar sesión</span>
+              </p>
+            </form>
+          )}
+
         </div>
       </div>
-    </div>
+    </main>
   );
 }
-
-export default Login;
